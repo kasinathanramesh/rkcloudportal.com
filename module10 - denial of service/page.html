@@ -1,0 +1,216 @@
+<!DOCTYPE html  PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'  'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'><html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>Module10 - Denial of Service</title>
+</head><body><ul><span style="color: #7f0000"><span style="background-color: #ffffff"><li>Denial-of-Service (DoS) and Distributed Denial-of-Service (DDoS) attacks have become a major threat to computer networks. These attacks attempt to make a machirre or network resource unavailable to its authorized users.</li>
+<li>DoS and DDoS attacks exploit vulnerabilities in the implementation ofTCP /IP model protocol or bugs in a specific OS.</li>
+</span></span></ul>
+<br/>
+Perform a DoS attack (SYN flooding) on a target host using Metasploit<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+Perform a DoS attack on a target host using hping3<br/>
+<br/>
+<br/>
+<br/>
+Perform a DDoS attack using HOIC<br/>
+<br/>
+<br/>
+Perform a DDoS attack using LOIC<br/>
+<br/>
+<br/>
+Perform a DoS Attack (SYN Flooding) on a Target Host using<br/>
+Metasploit<br/>
+<br/>
+Here, we will use the Metasploit tool to perform a DoS attack (SYN flooding) on<br/>
+a target host<br/>
+<br/>
+Note: In this task, we will use the Parrot Security (10.10.10.13) virtual machine<br/>
+to perform SYN floodingon the Windows 10 (10.10.10.10) virtual machine through<br/>
+port 21<br/>
+<br/>
+On the Parrot Terminal window, type nmap ·P 21 &lt;Target IP address&gt;<br/>
+(here, target IP address is 10.10.1 0.10 (Windows 1 0]) and press Enter.<br/>
+Note: -p: specifies the porttobe scanned.<br/>
+<br/>
+Now, we will perform SYN flooding on the target machine (Windows<br/>
+1 0) using port 21<br/>
+<br/>
+Type msfconsole from a command-line terminal and press Enter to<br/>
+launch msfconsole<br/>
+<br/>
+In the msf command line, type use auxiliary/dos/tcp/synflood and press<br/>
+Enter to launch a SYN flood module.<br/>
+<br/>
+<br/>
+Here, we will perform SYN flooding on port 21 of the Windows 10<br/>
+machine by spoofing the IP address of the Parrot Security machine with<br/>
+that of the Windows Server 2019 (10.10.10.19) machine.<br/>
+<br/>
+<br/>
+set RHOST &lt;Target IP Address&gt; (here, 10.10.10.10)<br/>
+set RPORT 21<br/>
+set SHOST &lt;Spoofable IP Address&gt; (here, 10.10.10.19)<br/>
+<br/>
+<br/>
+To do so, type exploit and press Enter. This begins SYN flooding the<br/>
+Windows 10 virtual machine<br/>
+<br/>
+<br/>
+Perform a DoS Attack on a Target Host using hping3<br/>
+<br/>
+Here, we will use the hping3 tool to perform DoS attacks such as SYN flooding, Ping<br/>
+ofDeath (PoD) attacks, and UDP application layer flood attacks on a target host.<br/>
+<br/>
+<br/>
+Turn on the Windows Server 2019 virtual machine<br/>
+<br/>
+On the Windows 1 0 virtual machine, dick the Type here to search field<br/>
+at the bottom of Desktop and type wireshark. Click Wireshark from the<br/>
+results.<br/>
+<br/>
+<br/>
+Wireshark starts capturing the packets; leave it running.<br/>
+<br/>
+A Parrot Terminal window appears<br/>
+<br/>
+In the terminal window; type hping3 -5 &lt;Target IP Address&gt; -a<br/>
+&lt;Spoofable IP Address&gt; -p 22 --flood and press Enter.<br/>
+<br/>
+18. Now, weshall perform a PoD attack on the target system.<br/>
+<br/>
+19. Switch to the Parrot Security virtual machine. In the Terminal window,<br/>
+type hping3 -d 65538 -5 -p 21 --flood &lt;Target IP Address&gt; (here, the<br/>
+target IP address is 10.10.1 0.10 (Windows 1 0]) and press Enter.<br/>
+Note: -d: specifies data size; -5: sets the SYN flag; -p: specifies the destination<br/>
+port; and --flood: sends a huge number of packets.<br/>
+<br/>
+Now, weshall perform a UDP application layer flood attack on the Windows<br/>
+Server 2019 virtual machine using NetBIOS port 139. To do so, first,<br/>
+determine whether NetBIOS port 139 is open or not.<br/>
+<br/>
+In the terminal window, type nmap -p 139 &lt;Target IP Address&gt; (here, the<br/>
+target IP address is 10.10.10.19 (Windows Server 2019]) and press Enter.<br/>
+<br/>
+Note: Here, we will use NetBIOS port 139 to perform a UDP application layer<br/>
+flood attack..<br/>
+<br/>
+Now, type hping3 -2 -p 139 --flood &lt;Target IP Address&gt; (here, the target IP<br/>
+address is 10.10.10.19 [Windows Server 2019]) and press Enter.<br/>
+<br/>
+Note: -2: specifies the UDP mode; -p: specifies the destination port; and --flood:<br/>
+sends a huge number of packets.<br/>
+<br/>
+Switch to the Windows Server 2019 virtual machine and log in with the<br/>
+credentials Administrator and Pa$$w0rd.<br/>
+<br/>
+Switch to the Windows Server 2019 virtual machine and log in with the<br/>
+credentials Administrator and Pa$$w0rd.<br/>
+<br/>
+Wireshark displays the network's flow of traffic. Here, observe the huge<br/>
+number ofUDP packets coming from the Source IP address 10.10.10.13 via<br/>
+port 139.<br/>
+<br/>
+<br/>
+Note: Here, we have used NetBIOS port 139 to perform a UDP application<br/>
+layer flood attack. Similarly, you can employ other application layer protocols to<br/>
+perform a UD P application layer flood attack on a target network.<br/>
+Some of the UDP based application layer protocols that attackers can employ to<br/>
+flood target networks include:<br/>
+<br/>
+CharGEN (Port 19)<br/>
+SNMPv2 (Port 161)<br/>
+QOTD (Port 1 7)<br/>
+RPC (Port 135)<br/>
+SSDP (Port 1900)<br/>
+CI DAP (Port 389)<br/>
+<br/>
+TFTP (Port 69)<br/>
+NetBIOS (Port 137,138,139)<br/>
+NTP (Port 123)<br/>
+Quake Network Protocol (Port<br/>
+26000)<br/>
+VoiP (Port 5060)<br/>
+<br/>
+Perform a DDoS Attack using HOIC<br/>
+<br/>
+Here, we will use the HOIC tool to perform a DDoS attack on the target machine.<br/>
+<br/>
+Note: To perform the DDoS attack, run this tool from various virtual machines<br/>
+at once. If you run the tool directly from tl1e shared drive in the virtual machines<br/>
+one at a time, errors might occur. To avoid errors, copy the folder High Orbit Ion<br/>
+Cannon (HOIC) individually to each machine's Desktop, and then run the tool.<br/>
+<br/>
+Now, switch to the Window 10 virtual machirre and navigate to Desktop.<br/>
+Open the High Orbit Ion Cannon (HOIC) folder and double-dick<br/>
+hoic2.1.exe.<br/>
+<br/>
+The HOIC GUI main window appears; dick the &quot;+&quot; button below the<br/>
+TARGETS section<br/>
+<br/>
+The HOIC - [Target] pop-up appears. Type the target URL such as<br/>
+http://[Target IP Address) (here, the target IP address is 1 0.1 0.10.13 [ Parrot<br/>
+Security]) in the URL field. Slide the Power bar to High. Under the Booster<br/>
+section, select GenericBoost.hoic from the drop-down list, and dick Add.<br/>
+<br/>
+Set the THREADS value to 20 by clicking the &gt; button until the value is<br/>
+reached.<br/>
+<br/>
+Now, switch to the Windows Server 2019 and Windows Server 2016 virtual<br/>
+machines and follow Steps 4-7 to configure HOIC.<br/>
+<br/>
+Once HOIC is configured on all machin es, switch to each machine (Windows<br/>
+10, Windows Server 2019, and Windows Server 2016) and click the FIRE<br/>
+TEH LAZER! button to initiate the DDoS attack on the target the Parrot<br/>
+Security machine.<br/>
+<br/>
+Observe that the Status changes from READY to ENGAGING, as shown in<br/>
+d1e screenshot.<br/>
+<br/>
+Switch to the Parrot Security virtual machine<br/>
+<br/>
+Click Applications in the top-left corner of Desktop and navigate to<br/>
+Pentesting -7 Information Gathering -7 wireshark.<br/>
+<br/>
+Perform a DDoS Attack using LOIC<br/>
+<br/>
+Here, we will use the LOIC tool to perform a DDoS attack on the target system.<br/>
+<br/>
+DoS and D DoS attack detettion techniques are based on identifying and<br/>
+discriminating between illegitimate traffic increases and flash events from legitimate<br/>
+packet trajjit:<br/>
+<br/>
+Detect and protect against DDoS attacks using Anti DDoS Guardian<br/>
+<br/>
+Detect and Protect against DDoS Attack using Anti DDoS<br/>
+Guardian<br/>
+<br/>
+Here, we will detect and protect agairrst a DDoS attack using Anti D DoS<br/>
+Guardian.<br/>
+<br/>
+Note: In this task, we will use the Windows Server 2019 and Windows Server<br/>
+2016 virtual machirres to perform a DDoS attack on the target system, Windows<br/>
+10..<br/>
+<br/>
+The Anti DDoS Guardian window appears, displaying information about<br/>
+incoming and outgoing traffic, as shown in the screenshot.<br/>
+<br/>
+Navigate to Desktop, open the High Orbit Ion Cannon (HOIC) folder,<br/>
+and double-dick hoic2.1.exe.<br/>
+<br/>
+Observe the huge number of packets coming from the host machirres<br/>
+(10.10.10.19 (Windows Server 2019) and 10.10.10.16 [Windows Server<br/>
+2016]).<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</body></html>

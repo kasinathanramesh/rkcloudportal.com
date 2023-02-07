@@ -1,0 +1,183 @@
+<!DOCTYPE html  PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'  'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'><html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>Module 13 • Hacking Web Servers</title>
+</head><body>Footprint a web server using various information-gathermg tools and<br/>
+inbuilt commands<br/>
+<br/>
+<br/>
+Enumerate web server information<br/>
+<br/>
+<br/>
+Crack remote passwords<br/>
+<br/>
+Information gathering using Ghost Eye<br/>
+<br/>
+Now, instaU Ghost Eye. To do this, in the terminal window, type git clone<br/>
+https:l/github.com/BullsEyeO/ghost_eye.git and press Enter.<br/>
+<br/>
+Now, navigate to the Ghost Eye directory. Type cd ghost_eye and press<br/>
+Enter.<br/>
+<br/>
+In the terminal window, type pip3 install -r requirements.txt and press<br/>
+Enter<br/>
+<br/>
+11. To launch Ghost Eye, type python3 ghost_eye.py and press Enter.<br/>
+<br/>
+Let us perform a Whois Lookup. Type 1 for the Enter your choice: option<br/>
+and press Enter<br/>
+<br/>
+16. Let us perform a DNS Lookup on certifiedhacker.com. In the Enter your<br/>
+choice field, type 2 and press Enter toperform DNS Lookup.<br/>
+<br/>
+The Enter Domain or IP Address field appears; type certifiedhacker.com,<br/>
+and press Enter.<br/>
+<br/>
+Now, perform the Clickjacking Test. Type 6 in the Enter your choice field<br/>
+and press Enter.<br/>
+<br/>
+In the Enter the Domain to test field, type certifiedhacker.com and press<br/>
+Enter.<br/>
+<br/>
+Perform web server reconnaissance using Skipfish<br/>
+<br/>
+In the terminal window, type skipfish -o /root/test -S<br/>
+/usr/share/skipfish/dictionaries/<br/>
+complete.wl http://[IP Address of Windows Server 2016]:8080 and<br/>
+press Enter.<br/>
+<br/>
+Before beginning a scan, Skipfish displays some tips. Press Enter tostart<br/>
+the security reconnaissance..<br/>
+<br/>
+<br/>
+<br/>
+Footprint a web server using the httprecon Tool<br/>
+<br/>
+Here, we will use the httprecon tool to gather information about a target web<br/>
+server.<br/>
+<br/>
+Turn on the Windows 10 and log in with the credentials Admin and<br/>
+Pa$$w0rd.<br/>
+<br/>
+Enter the website URL (here, www.certifiedhacker.com) that you want<br/>
+to footprint and select port number (80) in the Target section.<br/>
+<br/>
+Click Analyze to start analyzing the designated website.<br/>
+<br/>
+<br/>
+<br/>
+Footprint a web server using ID Serve<br/>
+<br/>
+<br/>
+<br/>
+Footprint a web server using Netcat and Telnet<br/>
+<br/>
+Turn on the Parrot Security and Windows Server 2019 virtual<br/>
+machines<br/>
+<br/>
+In the terminal window, type nc -vv www.moviescope.com 80 and press<br/>
+Enter.<br/>
+<br/>
+Now, perform bannergrabhing using telnet. In the terminal window, type<br/>
+telnet www.moviescope.com 80 and press Enter.<br/>
+<br/>
+<br/>
+<br/>
+Enumerate web server information using Nmap Scripring Engine (NSE)<br/>
+<br/>
+Enumerate the directories used by web serversandweb applications, in<br/>
+the terminal window. Type nmap -sV -script=http-enum &lt;target<br/>
+website&gt; and press Enter.<br/>
+<br/>
+The next step is to discover the hostnames that resolve the targeted<br/>
+domain.<br/>
+<br/>
+In the terminal window, type nmap -script hostmap-bfk -script-args<br/>
+hostmap-bfk.prefix=hostmap- www.goodshopping.com and press<br/>
+Enter.<br/>
+<br/>
+Perform an HTTP trace on the targeted domain. In the terminal window,<br/>
+type nmap --script http-trace -d www.goodshopping.com and press<br/>
+Enter.<br/>
+<br/>
+Now, check whether Web Application Firewall is configured on the target<br/>
+host or domain. In the terminal window, type nmap -pBO --script httpwaf-<br/>
+detect www.goodshopping.com and press Enter.<br/>
+<br/>
+Uniscan web server fingerprinting in Parrot Security<br/>
+<br/>
+Turn on the Windows Server 2016 virtual machirre and log in with the<br/>
+credentials Administrator and pa$$word.<br/>
+<br/>
+Start WAMPServer on the Windows Server 2016 virtual machine.<br/>
+Double-dick the WAMPServer shortcut icon on Desktop to start the server<br/>
+<br/>
+In the parot terminal window, type uniscan -h and hit Enter to display the<br/>
+uniscan help options.<br/>
+<br/>
+In the terminal window, type uniscan -u http:/110.10.10.16:8080/CEH -<br/>
+q and hit Enter to start scanning for directories.<br/>
+<br/>
+Note: Scroll to analyze the complete output of the scan. It should take<br/>
+approximately 10 minutes for the scan to fmish.<br/>
+<br/>
+Now, run uniscan using two options together. Here -w and -e are used<br/>
+together to enable the ftie check (robots.txt and sitemap.xml ftie). In the<br/>
+terminal window, type uniscan -u http://1 0.1 0.1 0.16:8080/CEH -we and<br/>
+hit Enter to start the scan.<br/>
+<br/>
+Now, use the dynamic testing option by giving the command -d. Type<br/>
+uniscan -u http://1 0.1 0.1 0.16:8080/CEH -d and hit Enter to start a<br/>
+dynamic scan on the web server.<br/>
+<br/>
+Perform a Web Server Attack<br/>
+<br/>
+Crack FTP credentials using a Dictionary Attack<br/>
+<br/>
+Here, we will firstly find the open FTP port using Nmap, and then perform a<br/>
+dictionary attack using the THC Hydra tool.<br/>
+<br/>
+Note: Here, we will use a sample password @e (Passwords.txt) containing a list<br/>
+of passwords to crack the FTP credentials on the target machine.<br/>
+<br/>
+Perform an Nmap scan on the target machine (Windows 10) to check if<br/>
+the FTP port is open.<br/>
+<br/>
+In the parrot terminal window, type nmap -p21 [IP Address of Windows<br/>
+1 0], and press Enter.<br/>
+<br/>
+Open a new terminal and jump to the root directory. Now, type hydraL<br/>
+/root/Wordlists/Usernames.txt -P /root/Wordlists/Passwords.txt<br/>
+ftp://[IP Address of Windows 10] and press Enter.<br/>
+<br/>
+N ote: The IP address ofWindows 10 in this lab exercise is 10.10.10.10. This<br/>
+IP address might vary in your lab environment.<br/>
+<br/>
+Type mkdir Hacked and press Enter to remotely create a directory named<br/>
+Hacked on the Windows 1 0 virtual machine through the ftp terminal.<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</body></html>

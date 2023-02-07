@@ -1,0 +1,92 @@
+<!DOCTYPE html  PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'  'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'><html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>Module 18 - IoT and OT Hacking</title>
+</head><body>Performing JoT and OT device footprinting<br/>
+<br/>
+Capturing and analyzing traffic between JoT devices<br/>
+<br/>
+The following are the various phases of JoT and OT device hacking:<br/>
+<br/>
+Information gathering<br/>
+Vulnerability scanning<br/>
+Launch attacks<br/>
+Gain remote access<br/>
+Maintain access<br/>
+<br/>
+Gather information using online footprinting tools<br/>
+<br/>
+Footprinting techniques are used to collect basic information about the target JoT and<br/>
+OT platforms to exploit them. Information collected through footprinting techniques<br/>
+includes IP adclress, hostname, ISP, device location, banner of the target IoT device,<br/>
+FCC ID information, certification granted to the device, etc.<br/>
+<br/>
+https://www.whois.com/whois/<br/>
+<br/>
+The Whois Domain Lookup page appears; type www.oasis-open.org in the<br/>
+search field and dick SEARCH.<br/>
+<br/>
+Now, press Ctri+T to open a new tab, type https://www.exploitdb.<br/>
+com/google-hacking-database in the address bar, and press Enter.<br/>
+<br/>
+Press Ctri+T to open a new tab, type https://www.google.com in the address<br/>
+bar, and press Enter.<br/>
+<br/>
+In the search field, type '&quot;login'&quot; intitle:'&quot;scada login'&quot; and dick the Google<br/>
+Search button.<br/>
+<br/>
+Similarly, you can use advanced search operators such as intitle:&quot;index or•<br/>
+scada to search sensitive SCADA directories that are exposed on sites.<br/>
+<br/>
+<br/>
+Now, in the browser window, press Ctri+T to open a new tab, type<br/>
+https://account.shodan.io/login in the address bar, and press Enter.<br/>
+<br/>
+Similarly, you can gather additional information on a target device using the<br/>
+following Shodan @ters:<br/>
+Search for Modbus-enabled ICS / SCADA systems:<br/>
+port502<br/>
+Search for SCADA systems using PLC name:<br/>
+&quot;Schneider Electric&quot;<br/>
+Search for SCADA systems using geolocation:<br/>
+SCADA Country:&quot;US&quot;<br/>
+<br/>
+Capture and analyze IoT traffic using Wireshark<br/>
+<br/>
+IoT rifers to a network rf devit-es having an IP address as well as the capability to<br/>
+sense, collett, and send data using embedded sensors, communkation hardware, and<br/>
+processors.<br/>
+<br/>
+Here, we use Wireshark to capture and analyze traffic between IoT devices.<br/>
+<br/>
+In the terminal window, type <br/>
+sudo snap install mqtt-explorer and press<br/>
+Enter to install the MQIT Explorer tool.<br/>
+<br/>
+Note: MQIT Explorer is a comprehensive MQIT dient that provides a<br/>
+structured overview of your MQIT topics and simplifies worlcing with<br/>
+devices/ services on your broker.<br/>
+<br/>
+After the installation is complete, switch to the Windows 1 0 virtual machine<br/>
+and login with the credentials Admin/ Pa$$w0rd.<br/>
+<br/>
+Switch back to the Ubuntu virtual machine. In the terminal window, type<br/>
+mqtt-explorer and press Enter to launch the MQIT Explorer tool.<br/>
+<br/>
+In the MQTT Connection window, click CONNECT.<br/>
+<br/>
+<br/>
+Now, in the Apply a display filter field, type mqtt and press Enter to display<br/>
+only the MQIT protocol packets.<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</body></html>

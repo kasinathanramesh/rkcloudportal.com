@@ -1,0 +1,299 @@
+<!DOCTYPE html  PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'  'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'><html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>Sample 1</title>
+</head><body>Question 1: <br/>
+Alex is an employee in an organization. While working with the Company’s sensitive legal contract, he encrypted the document and took a backup of that file, and deleted the encrypted file, but he forgot to delete the original copy of the file, and he went on vacation; later, he remembered that he forgot to delete the original file from his workplace machine. Alex has stored the document on the Desktop of his office computer. He approaches you to access the document and delete the file permanently from his workplace machine. Initialize a Windows remote desktop connection to access the file and enter the document number present in the file. Note: Computer name- Server2016; Username- Administrator; Password- shadow123<br/>
+<br/>
+1258963745<br/>
+<br/>
+Explanation<br/>
+Keywords to Notice: document, Computer Name, Desktop<br/>
+Firstly, after a complete Subnet scan with Nmap we can get the hostname, OS running on all the live machines.<br/>
+Secondly, Identify which machine host windows Server 2016<br/>
+Lastly, Login into to that devices via RDP by entering the Windows Server 2016 IP address with the given Credentials.<br/>
+Browse the Desktop, locate and open the Text file to get the document number<br/>
+<br/>
+Question 2:<br/>
+<br/>
+Chris, a network security specialist, was assigned to examine a packet capture file (moviescope.pcapng) located in the Documents folder of the Ethical Hacker-I machine and check if any user credentials were associated with www.moviescope.com are recorded in plain text format.<br/>
+<br/>
+Chris concluded that the site traffic was traversing in plain text, and he was able to access one of the usernames and passwords recorded in one of the packets. Enter the credentials found in the capture file. Give your response in the following format: Username/Password.<br/>
+<br/>
+sam/test123<br/>
+<br/>
+Explanation<br/>
+Keywords to Notice: pcapng, hostname, Plain text format<br/>
+Firstly, We will login to the Host Ethical hacker-1, then we will navigate to Documents Folder to access the moviescopemm.pcapng file by opening it in Wireshark Application.<br/>
+Secondly, Since the credentials are in plain text we get the Plain text data by Right Clicking the IP Address of moviescope.com website and Selecting Follow -&gt; TCP Stream<br/>
+Note: There will be huge data to analyze but a simple search trick will help, in search box enter <b>user </b>and keep clicking<b> Find Next </b>button until your find the username and password value.<br/>
+<br/>
+Question 3: <br/>
+<br/>
+An employee of an organization has stolen the company’s trade secrets and encrypted them using VeraCrypt. The VeraCrypt volume file &quot;secret” is stored on the Desktop of the Ethical Hacker-1 machine. While examining the employee's emails, the file password was found in one of the emails. You are an ethical hacker working with the company; decrypt the file and determine the secret code present in the file. Note: Password - &quot;test”<br/>
+<br/>
+4329512131<br/>
+<br/>
+Explanation<br/>
+Keywords to Notice: Ethical Hacker-1, VeraCrypt, password, secret<br/>
+Open the VeraCrypt tool -&gt; Select File -&gt; Mount -&gt; Enter the Password(test) -&gt; OK<br/>
+Browse the File Explorer and check the newly add Disk, open the file present in it and answer<br/>
+<br/>
+<br/>
+Question 4: <br/>
+<br/>
+A file named Hash.txt has been uploaded through DVWA (http://172.16.0.27:8080/DVWA).The file is located in the directory mentioned below. Access the file and crack the MD5 hash to reveal the<br/>
+<br/>
+original message; enter the content after cracking the Hash. You can log into the DVWA using the following credentials. Not* Username- admin; Password- password Path: C:\wamp64\www\DVWA\hackable\uploads\Hash.txt<br/>
+<br/>
+Hint: Use the &quot;type&quot; command to view the file. Use the following link to decrypt the Hash- https://hashes.com/en/decrypt/hash<br/>
+<br/>
+I-am-hashed-Data<br/>
+<br/>
+Explanation<br/>
+Keywords to Notice: DVWA, MD5, type command, decrypt, file path, credentials<br/>
+Here there are two method:<br/>
+1. Upload a php shell file and take reverse shell and traverse through the folders to get hash.txt file and view the hash<br/>
+2. Go to Command Injection after login to DVWA website by keeping the Security as Low.<br/>
+Enter this command <b>|type C:\wamp64\www\DVWA\hackable\uploads\Hash.txt</b><br/>
+This will show the hash, copy that hash and open <a href="https://hashes.com/en/decrypt/hash"><b>https://hashes.com/en/decrypt/hash</b></a><br/>
+website in another tab and paste to get the decrypted content<br/>
+<br/>
+Question 5: <br/>
+<br/>
+Adam works as a cybersecurity analyst at a data center. While analyzing the network traffic, he observed a massive surge of incoming traffic from multiple sources. After analyzing, he concluded that the data center was subject to a DDoS attack. The captured network session (DDoS.pcapng) is stored on the Desktop of the Ethical Hacker-2 machine. Determine the number of machines that were used to initiate the attack.<br/>
+<br/>
+4<br/>
+<br/>
+Explanation<br/>
+Keywords to Notice: multiple sources, DDOS.pcapng, DDOS Attack<br/>
+Firstly, Login to Ethical Hacker-2 machine and Open the file DDOS.pcapng from Wireshark<br/>
+Secondly, In Wireshark go to <b>Statistics</b> and Select <b>Conversations, </b>sort by packets<br/>
+Now we can see the number of IPv4 Address based on number of Packets transfer, count the unique IP Address with huge amount of Packet transfer<br/>
+<br/>
+Question 6<br/>
+<br/>
+A file named Cry-DES (ECB)-FTP-lP.hex is located in the Documents folder in the &quot;Ethical Hacker-I&quot; machine. It contains credentials to connect to an FTP server. However, the file is encrypted using DES(ECB) algorithm. Decrypt the file to get the FTP credentials, connect to the FTP server and obtain the file named &quot;flag1.txt.&quot; Enter the content in the file as the answer. Note: Use &quot;Blackhat&quot; as the FTP username.<br/>
+<br/>
+ThisisFTPfile<br/>
+<br/>
+Explanation<br/>
+Keywords to Notice: DES(ECB) Algorithm, FTP, Flag1.txt, Cry-DES (ECB)-FTP-lP.hex<br/>
+Firstly, The question is all about the CrypTool, open the file in this tool and go to Encrypt/Decrypt Menu and select Symmetric(modern) -&gt; DES(ECB) -&gt; Decrypt. Now you can see the content of the file i.e, password.<br/>
+Secondly, After getting the credentials, open Terminal (Parrot OS), type FTP and Press Enter<br/>
+Input Username and Password.<br/>
+After successful login, type <b>ls </b>to view the files list, now to copy the “flag1.txt” to local machine type<br/>
+<b>ftp&gt; get flag1.txt ~/Desktop/filepath/flag_data1.txt</b><br/>
+After getting the file, exit the FTP console and <b>cat ~/Desktop/filepath/flag_data1.txt</b><br/>
+<i>Note: If any error related to flag_data1.txt, then first create a file with this name flag_data1.txt and then run the above get command</i><br/>
+<br/>
+<br/>
+Question 7<br/>
+<br/>
+<br/>
+The account number of a customer was stolen from a banks database. The attacker encrypted the file using CrypTool. You are an ethical hacker working with the bank; the bank has retained the cipher file &quot;Cry-RC4- Accountno.hex' in the Documents folder of the Ethical Hacker-1 machine<br/>
+<br/>
+and has asked you to decrypt the information hidden in the file. Determine the account number by decrypting the file. Hint: Use &quot;14&quot; as the key-value under the key length.<br/>
+<br/>
+44444612345678<br/>
+<br/>
+Explanation<br/>
+Keywords to Notice: Ethical Hacker-1, key-value, Cry-RC4- Accountno.hex<br/>
+The question is all about the CrypTool, open the file in this tool and go to Encrypt/Decrypt Menu and select Symmetric(modern) -&gt; RC4 -&gt; KEY 14 -&gt; Decrypt. Now you can see the content of the file.<br/>
+Note: As the Encryption algorithm name is present in Filename, so they have not mentioned in the question.<br/>
+<br/>
+<br/>
+Question 8<br/>
+You are Henry, an ethical hacker working for a web development company. While testing the website &quot;www.moviescope.com&quot; for vulnerabilities, you came across an SQL-injection vulnerability. The cookie information is stored in a text file in the Documents folder of the Ethical Hacker-2 machine. Use the SQL DSSS attack method to capture the session link. Determine the contact number of Kety associated with the website. Note: Use the credentials you obtained in the previous challenge.<br/>
+<br/>
+1-202-502-2431<br/>
+<br/>
+Explanation<br/>
+Keywords to Notice: URL, Kety, SQL DSSS, Cookie, Ethical Hacker-2<br/>
+Two ways.<br/>
+1. Login to <a href="http://www.moviescopr/">www.moviescope.com</a> using credentials and browse to profile of the logged in user, and use IDOR vulnerability by changing the ID value until you see, Kety profile details<br/>
+2. Use <b>SqlMap </b>tool to dump the entire database to get the details<br/>
+<br/>
+<br/>
+Question 9<br/>
+A stockbroker in an asset management company has secretly acquired trade account information through an application from the company. He has saved this information on the SD card of his Android mobile phone. The company has acquired you as an ethical hacker to covertly access the file and delete it. Enter the account information present in the file. Note: Only provide the numeric values in the answer field.<br/>
+<br/>
+1876890<br/>
+<br/>
+<br/>
+Explanation<br/>
+Keywords to Notice: Android, SD Card, file<br/>
+Firstly, After the initial Scan through Nmap we can determine the IP Address of a Android device, so we to connect the device using <b>ADB </b>command and retrieve the file<br/>
+Secondly, Enter the below commands and connect to the Android and access the file<br/>
+<ul><li style="list-style-type: none">adb connect 192.168.0.4:5555</li>
+</ul>
+<ul><li style="list-style-type: none">adb devices -l</li>
+</ul>
+<ul><li style="list-style-type: none">adb shell</li>
+</ul>
+<ul><li style="list-style-type: none">cd SD Card</li>
+</ul>
+<ul><li style="list-style-type: none">ls </li>
+</ul>
+<ul><li style="list-style-type: none">cat file.txt</li>
+</ul>
+<br/>
+<br/>
+Question 10<br/>
+An employee in an organization has stolen important bank credentials and stored it in a file named Confidential.txt using steganography. The file has been identified and retained from his email attachment and stored in the machine named &quot;Ethical Hacker-I.&quot; Determine the information hidden in the file along with the account number present in the file. Path: C:\Users\Admin\Documents\Snow\Confidential.txt<br/>
+<br/>
+Note: The password of Confidential.txt is &quot;test.&quot; Enter only numeric values in the answer field..<br/>
+<br/>
+450989878899<br/>
+<br/>
+Explanation<br/>
+Keywords to Notice: machine name, Path, Snow, password, steganography<br/>
+Firstly, In this case EthicalHacker-1 machine is the attacker windows machine we know it because it will be given in the Details section In the exam.<br/>
+Secondly, Since the file path is already given, we can easily navigate to file.<br/>
+Lastly, open Terminal/PowerShell in the folder and use the SNOW.exe tool to decrypt the file by specifying the password<br/>
+Command: <b>SNOW.EXE -C -p test Confidential.txt</b><br/>
+<br/>
+Question 11<br/>
+A web application &quot;www.moviescope.com&quot; is vulnerable to SQL injection attacks. You are an ethical hacker working in a web development specify the method that poses a high risk to the web application. Hint: Use OWASP ZAP tool.<br/>
+<br/>
+POST<br/>
+<br/>
+Explanation<br/>
+Keywords to Notice: Method, OWASP , SQL Injection<br/>
+There are two paths to solve this problem.<br/>
+1. Here we must remember the HTTP Methods (GET, POST, PUT, DELETE etc) which are used in communication on Internet. Also, mostly parameter is passed using GET and POST methods. So, without using the OWASP tool on can guess it would be <b>POST or GET</b> method.<br/>
+2. Run the OWASP tool, enter the web app URL and click on Attack button, wait till the attack completes and click the Spider section and analyze the request method used in it.<br/>
+<br/>
+Question 12<br/>
+<br/>
+. A critical file has been hidden in the Server 2016 machine in the directory mentioned below. You are an ethical hacker working with a company. You have been assigned to retrieve the file &quot;SECRET.txt&quot; using a backdoor installed in the server. Enter the secret number hidden in the filePath: C:\Users\Administrator\Documents\Findme.<br/>
+<br/>
+48098889900<br/>
+<br/>
+Explanation<br/>
+Keywords to Notice: server 2016, SECRET.txt, backdoor, Path<br/>
+Firstly, Since we already have the IP Address and Credential for Server 2016 we can easily login to the Sever and navigate to that folder.<br/>
+Secondly, As the file SECRET.txt is hidden, Open up Powershell Terminal and type <b>ls -force</b> and <b>cat SECRET.txt</b><br/>
+<br/>
+Remember, there are multiple Path to reach a Destination, but the best path would be easy with less Time.<br/>
+<br/>
+Question 13<br/>
+A folder named &quot;Imp&quot; has been sent to Joseph's machine over an email. Joseph suspects that someone might have tampered with the files during transmission. The Original hashes of the files have been retained by the sender and stored in a folder named Hash. Joseph has approached you to check the integrity of the file by comparing the MD5 hashes. Compare the hash values and determine the file name that has been tampered with.<br/>
+<br/>
+Path:: \Users\Admin\Documents\lmp\Hash Note: Exclude the file extension in the answer field. The answer is case-sensitive.<br/>
+<br/>
+File2<br/>
+<br/>
+Explanation<br/>
+Keywords to Notice: MD5 hashes, Imp folder, Path<br/>
+In this case we have to compare one file hash with another and determine if there is change in it, we can HashCalc or MD5 Calculator.<br/>
+Firstly, Open the File which contains the hash value and now open <b>HashCalc </b>tool to open the file which we need to verify the integrity.<br/>
+Compare the Hash value, if there is change, then the file is been tampered or if both are same then the files are not tampered.<br/>
+<br/>
+<b>There is no need to the answer to be right in this Exam Questions , but the understanding of Concept is explained, so stick to methods/Steps/basics.</b> <br/>
+<br/>
+Question 14<br/>
+<br/>
+An FTP site is hosted on a machine in a network. Crack the FTP credentials to obtain the file &quot;flag.txt&quot; available on the FTP server and enter the content of the file as the answer.<br/>
+<br/>
+Adam@smith<br/>
+<br/>
+Explanation<br/>
+Keywords to Notice: FTP, flag.txt<br/>
+Firstly, The username list and password list files are stored on Desktop with Folder name “<b>Wordlist”</b><br/>
+Secondly, By using Hydra tool we can attack and get the credentials.<br/>
+Command: <b>hydra -L wordlist/userlist.txt -P wordlist/passlist.txt ftp://192.168.0.100</b><br/>
+<br/>
+<br/>
+Thirdly, After getting the credentials, open Terminal(Parrot OS) , type FTP and Press Enter<br/>
+Input Username and Password.<br/>
+After successful login, type <b>ls </b>to view the files list, now to copy the “flag.txt” to local machine type<br/>
+ftp&gt; get flag.txt ~/Desktop/filepath/flag_data.txt<br/>
+After getting the file, exit the FTP console and <b>cat ~/Desktop/filepath/flag_data.txt</b><br/>
+Note: If any error related to flag_data.txt, then first create a file with this name flag_data.txt and then run the above get command<br/>
+<br/>
+Question 15:<br/>
+<br/>
+During a security assessment, it was found that a server was hosting a website that was susceptible to blind SQL injection attacks. Further investigation revealed that the underlying database management system of the site was MySQL. Determine the machine OS that hosted the database.<br/>
+<br/>
+Windows 10<br/>
+<br/>
+Explanation<br/>
+Keywords to Notice: SQL injection, MySQL, Website<br/>
+Firstly, after a complete Subnet scan with Nmap we can get the OS version and all services running on all the live machines.<br/>
+Secondly, usually MySQL services runs on <b>3306</b> port number, so search it and determine the OS name and enter the text box<br/>
+<br/>
+Question 16: <br/>
+An attacker with malicious intent has identified a vulnerability in a machine in a corporate network. He has encoded the machine's IP address and left it in the database. While auditing the database, the encoded file was identified by the database admin. Decode the file present in the Ethical Hacker-1 machine and enter the IP address. Path:C:\Users\Admin\Desktop\EncodedFile.txt Hint: The password to decode the file is magic1234<br/>
+<br/>
+172.16.0.40<br/>
+<br/>
+Explanation<br/>
+Keywords to Notice: Ethical Hacker-1, password, EncodedFile.txt<br/>
+Firstly, Login to Ethical Hacker-1 machine, Browse the Admin Desktop and locate the EncodedFile.txt, Since we are pretty sure the we cant use snow.exe tool as it is encoded we use BCTextEncoder tool to decode the file.<br/>
+Secondly, Locate the <b>BCTextEncoder</b> software in CEH tool shared drive, Open the EncodedFile.txt file and enter the password <b>magic123</b> to decode<br/>
+<br/>
+Question 17: <br/>
+While running an Nmap script, it was found that a port used to establish a Windows remote desktop connection was opened in one of the machines on the network. Find the IP address of that machine?<br/>
+<br/>
+169.254.0.100<br/>
+<br/>
+Explanation<br/>
+<i>Keywords to Notice: Windows remote Desktop, Nmap, IP Address</i><br/>
+Firstly, we have to run a full Nmap Scan on the subnet, to get all the ports and services running on all machines.<br/>
+Secondly, search for port <b>389</b>(RDP port) in the output of Nmap and find the IP address which as this 389-port open.<br/>
+<br/>
+Question 18:<br/>
+A denial-of-service attack has been launched on a target machine in a network. A network session file &quot;DoS.pcapng” has been captured and stored in the Documents folder of the Ethical Hacker-I machine. Find the attacker machine's IP address.<br/>
+<br/>
+172.16.0.14<br/>
+<br/>
+Explanation<br/>
+Keywords to Notice: DOS.pcapng, IP Address, Document Folder<br/>
+Firstly, We will login to the Host Ethical hacker-1, then we will navigate to Documents Folder to access the DOS.pcapng file by opening it in Wireshark Application<br/>
+Secondly, In Wireshark go to <b>Statistics</b> and Select <b>Conversations, IPv4 </b>and click<b> </b>sort by packets<br/>
+Now check the Packets numbers sent from A-&gt;B and B-&gt;A , the highest the number the going from one ip to another ip, will the IP Address which is doing DOS attack.<br/>
+Youtube Link : <a href="https://youtu.be/z2F5gauWuZE?t=923">Live Demonstration</a><br/>
+<br/>
+Question 19: <br/>
+James, an employee of an organization, is unable to access his WordPress account (http://172.16.0.27:8080/CEH).James informs you about the suspicious lockout of his account. You are an ethical hacker working with the organization; retrieve the password from the Wordpress database and determine the password associated with the user to james?<br/>
+<br/>
+Welcome@2022<br/>
+<br/>
+Explanation<br/>
+Keywords to Notice: WordPress, james, ip address<br/>
+Firstly, We have the URL for WordPress site and username, so we can easily crack WordPress login credentials by using wpscan tool<br/>
+Second, using wpscan we will specify the username and password wordlist to crack.<br/>
+<br/>
+wpscan --url http://172.16.0.27:8080/CEH -u james -P ~/wordlists/password.txt<br/>
+<br/>
+Question 20: <br/>
+During a security assessment in an organizational network, a suspicious Domain User account was found to have been added in a machine with IP address 172.16.0.27. The following user accounts were identified as safe: Administrator, Alex, TomHanks, krbtgt, DefaultAccount and Alan.<br/>
+<br/>
+Enumerate the Domain User of the suspicious account. Provide only username, exclude the domain name<br/>
+Note: Username-Administrator, Password- Shadow123<br/>
+<br/>
+Harris<br/>
+<br/>
+Explanation<br/>
+Keywords to Notice: IP address, Domain user accounts,<br/>
+There can be two approaches<br/>
+1. Login to the Windows Server directly via the credentials and access the Local Users and Groups from the Server manager’s Tools Menu<br/>
+2. Use ADExplorer and enter the credentials and view the details<br/>
+Lastly, compare the usernames present in the question and enter the answer which is not present<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</body></html>

